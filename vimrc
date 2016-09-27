@@ -147,6 +147,13 @@ endif
 " Vim settings and mappings
 " You can edit them as you wish
 
+" Enable folding
+set foldmethod=indent 
+set foldlevel=99
+" Enable folding with spacebar
+nnoremap <space> za
+
+
 " allow plugins by file type (required for plugins!)
 filetype plugin on
 filetype indent on
