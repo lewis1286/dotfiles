@@ -34,6 +34,9 @@ Plugin 'gmarik/vundle'
 " Active plugins
 " You can disable or add new ones here:
 
+" folding plugin 
+Plugin 'tmhedberg/SimpylFold'
+
 " Plugins from github repos:
 
 " Python and PHP Debugger
@@ -184,6 +187,8 @@ set encoding=utf-8
 
 set backspace=2 " make backspace work like most other apps
 set backspace=indent,eol,start
+set clipboard=unnamed " copy to clipboard
+vnoremap <C-c> "*y 
 
 " tab length exceptions on some file types
  autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
@@ -576,3 +581,8 @@ let g:vim_markdown_frontmatter=1
 " and when you open this, you can manually trigger preview
 " via the command :InstantMarkdownPreview
 let g:instant_markdown_autostart = 0
+
+
+" add new line without entering insert mode 
+nmap <S-Enter> O<Esc>
+nmap <CR> o<Esc> 
