@@ -10,4 +10,4 @@
 #move screen so curser is at top or bottom
 zt or zb 
 
-
+:vnew # open new file in vertical split
