@@ -34,6 +34,9 @@ Plugin 'gmarik/vundle'
 " Active plugins
 " You can disable or add new ones here:
 
+" folding plugin 
+Plugin 'tmhedberg/SimpylFold'
+
 " Plugins from github repos:
 
 " Python and PHP Debugger
@@ -578,3 +581,8 @@ let g:vim_markdown_frontmatter=1
 " and when you open this, you can manually trigger preview
 " via the command :InstantMarkdownPreview
 let g:instant_markdown_autostart = 0
+
+
+" add new line without entering insert mode 
+nmap <S-Enter> O<Esc>
+nmap <CR> o<Esc> 
