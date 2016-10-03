@@ -198,6 +198,8 @@ vnoremap <C-c> "*y
 " auto open or close NERDTree
 autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" show hidden files in NERDTree 
+"let NERDTreeShowHidden=1
 
 " always show status bar
 set laststatus=2
@@ -265,7 +267,7 @@ if &term =~? 'mlterm\|xterm\|xterm-256\|screen-256'
 	let &t_Co = 256
     colorscheme zenburn 
 else
-    colorscheme delek
+    colorscheme zenburn 
 endif
 
 " colors for gvim
