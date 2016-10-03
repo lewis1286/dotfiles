@@ -265,7 +265,7 @@ if &term =~? 'mlterm\|xterm\|xterm-256\|screen-256'
 	let &t_Co = 256
     colorscheme zenburn 
 else
-    colorscheme delek
+    colorscheme zenburn 
 endif
 
 " colors for gvim
