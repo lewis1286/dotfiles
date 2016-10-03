@@ -198,6 +198,8 @@ vnoremap <C-c> "*y
 " auto open or close NERDTree
 autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" show hidden files in NERDTree 
+"let NERDTreeShowHidden=1
 
 " always show status bar
 set laststatus=2
