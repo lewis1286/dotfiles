@@ -1,6 +1,8 @@
 tmux - enter tmux
 exit - exit tmux
 
+# load config file
+tmux source-file ~/.tmux.conf 
 
 <Cntl -b> # enters tmux commands, prefix for all the below commands
 
