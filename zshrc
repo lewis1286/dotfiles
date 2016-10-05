@@ -2,12 +2,12 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/lewisguignard/.oh-my-zsh
+  export ZSH=/home/admin06/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnoster"
+ZSH_THEME="kolo"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -82,35 +82,35 @@ source $ZSH/oh-my-zsh.sh
 #
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+#
+source /etc/environment
 
-
-alias ls="ls -G"
-JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_91.jdk/Contents/Home
-export JAVA_HOME
-export PATH=/Users/lewisguignard/Documents/code/apache-maven-3.3.9/bin:$PATH
-
-SCALA_HOME=/usr/local/Cellar/scala/2.11.8/
-export SCALA_HOME
-export PATH=$PATH:$SCALA_HOME/bin
-
-
-
-# get python to import pyspark by setting these vars
-export SPARK_HOME="$HOME/spark-1.6.1"
-export PATH=$PATH:$SPARK_HOME
-export PYSPARK_SUBMIT_ARGS="--master local[2] pyspark-shell"
-export PYTHONPATH=$SPARK_HOME/python:$PYTHONPATH
-export PYTHONPATH=$SPARK_HOME/python/lib/py4j-0.9-src.zip:$PYTHONPATH
-export PYTHONPATH=$HOME/anaconda/lib/python2.7/site-packages/:$PYTHONPATH
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-export PATH="$PATH:$HOME/anaconda/bin:/usr/bin:/bin:/usr/sbin:/sbin"TH="$PATH:$HOME/anaconda/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 # api code for Verisign API
 export IDEF_TOKEN="vaS6wOPtpl0IIXGdnCejxKJTQpLrS3s8-VpTvuaSXYfYrvs107aAnlJ-HwCqdMhhhHWGLTykiL5TTibZc07i_Kw-QR_fItbAp_xVLWU6dI0mkdDkZY35py7XuYJp5pcfAvtOuXehGSJM23S86RobPlaW058X2Bmm1W0lS-j93S562ptx9qjWcXpI_dPl_n4yIFtBJAOeO4igU7bmAjWCO6hugX9fuDcE_LYP6MgV2AU"
 export IDEF_URL="https://api.intelgraph.verisign.com/rest/"
 
-#alias vim='/usr/local/Cellar/vim'
 
-# raspberry pi connection
-#alias spi="ssh pi@10.0.0.125"
+# submit spark jobs without typing all the stuff
+sparkjobfunction() {
+	$SPARK_HOME/bin/spark-submit --master local $1
+}
+alias sj=sparkjobfunction
+
+# changing folders aliae
+alias api="cd /srv/http/sites/corax_api"
+alias engine="cd /srv/http/engine/corax_engine"
+alias integration="cd /srv/http/sites/corax_integration"
+
+# git aliae
+alias devdn="git pull origin development"
+alias LGdn="git pull origin LG/local_development"
+alias devup="git push origin development"
+alias LGup="git push origin LG/local_development"
+
+# tux colors
+alias tmux="TERM=screen-256color-bce tmux"
+alias tm="tmux attach -t work" # shortcut to open tmux with my session
+
+# other aliae 
+alias cl="clear" 
+alias ohmyzsh="mate ~/.oh-my-zsh"
