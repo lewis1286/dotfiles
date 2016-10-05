@@ -513,7 +513,7 @@ let g:choosewin_overlay_enable = 1
 " Airline ------------------------------
 
 let g:airline_powerline_fonts = 1
-let g:airline_theme = 'bubblegum'
+let g:airline_theme = 'papercolor'
 "let g:airline#extensions#tabline#enabled = 1
 "let g:airline#extensions#tabline#left_sep = ' '
 "let g:airline#extensions#tabline#left_alt_sep = '|'
@@ -532,13 +532,13 @@ endif
 " let g:airline_symbols.readonly = '⭤'
 " let g:airline_symbols.linenr = '⭡'
 
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
+let g:airline_left_sep = ','
+let g:airline_left_alt_sep = ','
+let g:airline_right_sep = ','
+let g:airline_right_alt_sep = ','
+let g:airline_symbols.branch = ','
+let g:airline_symbols.readonly = ','
+let g:airline_symbols.linenr = ','
 
 " new file set title and turn to endline
 autocmd BufNewFile *.sh,*.py,*.rb exec ":call SetTitle()"
