@@ -2,8 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/admin06/.oh-my-zsh
-
+export ZSH=/Users/lewisguignard/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -88,24 +87,6 @@ source /etc/environment
 # api code for Verisign API
 export IDEF_TOKEN="vaS6wOPtpl0IIXGdnCejxKJTQpLrS3s8-VpTvuaSXYfYrvs107aAnlJ-HwCqdMhhhHWGLTykiL5TTibZc07i_Kw-QR_fItbAp_xVLWU6dI0mkdDkZY35py7XuYJp5pcfAvtOuXehGSJM23S86RobPlaW058X2Bmm1W0lS-j93S562ptx9qjWcXpI_dPl_n4yIFtBJAOeO4igU7bmAjWCO6hugX9fuDcE_LYP6MgV2AU"
 export IDEF_URL="https://api.intelgraph.verisign.com/rest/"
-
-
-# submit spark jobs without typing all the stuff
-sparkjobfunction() {
-	$SPARK_HOME/bin/spark-submit --master local $1
-}
-alias sj=sparkjobfunction
-
-# changing folders aliae
-alias api="cd /srv/http/sites/corax_api"
-alias engine="cd /srv/http/engine/corax_engine"
-alias integration="cd /srv/http/sites/corax_integration"
-
-# git aliae
-alias devdn="git pull origin development"
-alias LGdn="git pull origin LG/local_development"
-alias devup="git push origin development"
-alias LGup="git push origin LG/local_development"
 
 # tux colors
 alias tmux="TERM=screen-256color-bce tmux"

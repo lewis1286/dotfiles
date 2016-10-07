@@ -588,3 +588,8 @@ let g:instant_markdown_autostart = 0
 " add new line without entering insert mode 
 nmap <S-Enter> O<Esc>
 nmap <CR> o<Esc> 
+
+" write to protected files while not in sudo mode 
+" from
+" http://stackoverflow.com/questions/2600783/how-does-the-vim-write-with-sudo-trick-work
+cmap w!! w !sudo tee > /dev/null %
