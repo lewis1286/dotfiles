@@ -83,7 +83,7 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 #
-source /etc/environment
+#source /etc/environment
 
 # api code for Verisign API
 export IDEF_TOKEN="vaS6wOPtpl0IIXGdnCejxKJTQpLrS3s8-VpTvuaSXYfYrvs107aAnlJ-HwCqdMhhhHWGLTykiL5TTibZc07i_Kw-QR_fItbAp_xVLWU6dI0mkdDkZY35py7XuYJp5pcfAvtOuXehGSJM23S86RobPlaW058X2Bmm1W0lS-j93S562ptx9qjWcXpI_dPl_n4yIFtBJAOeO4igU7bmAjWCO6hugX9fuDcE_LYP6MgV2AU"
