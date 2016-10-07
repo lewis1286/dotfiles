@@ -48,7 +48,7 @@ Plugin 'scrooloose/nerdcommenter'
 " Class/module browser
 Plugin 'majutsushi/tagbar'
 " Code and files fuzzy finder
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 " Extension to ctrlp, for fuzzy command finder
 Plugin 'fisadev/vim-ctrlp-cmdpalette'
 " Zen coding
@@ -588,3 +588,6 @@ let g:instant_markdown_autostart = 0
 " add new line without entering insert mode 
 nmap <S-Enter> O<Esc>
 nmap <CR> o<Esc> 
+
+" autosave when losing focus
+autocmd BufLeave,FocusLost * silent! wall
