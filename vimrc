@@ -34,6 +34,9 @@ Plugin 'gmarik/vundle'
 " Active plugins
 " You can disable or add new ones here:
 
+" easy motion to find text <Leader> letter 
+Plugin 'easymotion/vim-easymotion'
+
 " folding plugin 
 Plugin 'tmhedberg/SimpylFold'
 
@@ -149,6 +152,8 @@ endif
 " ============================================================================
 " Vim settings and mappings
 " You can edit them as you wish
+
+let mapleader=","
 
 " Enable folding
 set foldmethod=indent 
