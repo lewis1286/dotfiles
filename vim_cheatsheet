@@ -11,3 +11,7 @@
 zt or zb 
 
 :vnew # open new file in vertical split
+
+# NERDTree:
+B #show bookmarks
+:Bookmark # add bookmark

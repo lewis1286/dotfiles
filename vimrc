@@ -46,6 +46,7 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'fisadev/vim-debug.vim'
 " Better file browser
 Plugin 'scrooloose/nerdtree'
+
 " Code commenter
 Plugin 'scrooloose/nerdcommenter'
 " Class/module browser
