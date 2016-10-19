@@ -192,7 +192,7 @@ set encoding=utf-8
 
 set backspace=2 " make backspace work like most other apps
 set backspace=indent,eol,start
-set clipboard=unnamedplus " copy to clipboard
+set clipboard=unnamed " copy to clipboard
 vnoremap <C-c> "*y 
 
 " tab length exceptions on some file types
