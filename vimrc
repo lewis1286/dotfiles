@@ -555,6 +555,7 @@ function SetTitle()
 
     elseif &filetype == 'python'
         call setline(1,"#!/usr/bin/env python")
+        call append(line("."),"Lewis Guignard")
         call append(line("."),"# coding=utf-8")
 	    call append(line(".")+1, "") 
 
