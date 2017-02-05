@@ -196,7 +196,7 @@ set encoding=utf-8
 
 set backspace=2 " make backspace work like most other apps
 set backspace=indent,eol,start
-set clipboard=unnamed " copy to clipboard
+set clipboard=unnamedplus " copy to clipboard
 vnoremap <C-c> "*y 
 
 " tab length exceptions on some file types
@@ -558,6 +558,7 @@ function SetTitle()
 
     elseif &filetype == 'python'
         call setline(1,"#!/usr/bin/env python")
+        call append(line("."),"Lewis Guignard")
         call append(line("."),"# coding=utf-8")
 	    call append(line(".")+1, "") 
 
