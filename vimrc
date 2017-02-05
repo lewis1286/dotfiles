@@ -34,6 +34,9 @@ Plugin 'gmarik/vundle'
 " Active plugins
 " You can disable or add new ones here:
 
+" latex editor capability
+Plugin 'lervag/vimtex'
+
 " easy motion to find text <Leader> letter 
 Plugin 'easymotion/vim-easymotion'
 
