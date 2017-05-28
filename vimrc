@@ -605,3 +605,6 @@ nmap <CR> o<Esc>
 cmap w!! w !sudo tee > /dev/null %
 " autosave when losing focus
 autocmd BufLeave,FocusLost * silent! wall
+
+" don't add stupid taps when pasting in from clipboard over ssh 
+set paste
