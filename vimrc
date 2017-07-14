@@ -34,6 +34,9 @@ Plugin 'gmarik/vundle'
 " Active plugins
 " You can disable or add new ones here:
 
+" lots of colorschemes 
+"Plugin 'flazz/vim-colorschemes'
+
 " easy motion to find text <Leader> letter 
 Plugin 'easymotion/vim-easymotion'
 
@@ -186,14 +189,16 @@ set confirm
 set nobackup
 " other settings 
 set langmenu=zh_CN.UTF-8
-set mouse=a
+"set mouse=a
 set whichwrap+=<,>,h,l,[,]
 set background=dark
 set encoding=utf-8
 
 set backspace=2 " make backspace work like most other apps
 set backspace=indent,eol,start
-set clipboard=unnamedplus " copy to clipboard
+"set clipboard=unnamedplus " copy to clipboard
+set clipboard=unnamed " copy to clipboard
+
 vnoremap <C-c> "*y 
 
 " tab length exceptions on some file types
