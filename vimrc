@@ -34,8 +34,8 @@ Plugin 'gmarik/vundle'
 " Active plugins
 " You can disable or add new ones here:
 
-" lots of colorschemes 
-"Plugin 'flazz/vim-colorschemes'
+" latex editor capability
+Plugin 'lervag/vimtex'
 
 " easy motion to find text <Leader> letter 
 Plugin 'easymotion/vim-easymotion'
@@ -560,6 +560,7 @@ function SetTitle()
 
     elseif &filetype == 'python'
         call setline(1,"#!/usr/bin/env python")
+        call append(line("."),"Lewis Guignard")
         call append(line("."),"# coding=utf-8")
 	    call append(line(".")+1, "") 
 
@@ -606,3 +607,6 @@ nmap <CR> o<Esc>
 cmap w!! w !sudo tee > /dev/null %
 " autosave when losing focus
 autocmd BufLeave,FocusLost * silent! wall
+
+" don't add stupid taps when pasting in from clipboard over ssh 
+set paste
