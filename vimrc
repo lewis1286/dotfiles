@@ -11,7 +11,7 @@ scriptencoding utf-8
 " no vi-compatible
 set nocompatible
 
-" Setting up Vundle - the best vim slugin manager
+" Setting up Vundle - the best vim plugin manager
 let iCanHazVundle=1
 let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
 if !filereadable(vundle_readme)
@@ -51,7 +51,7 @@ Plugin 'fisadev/vim-debug.vim'
 Plugin 'scrooloose/nerdtree'
 
 " Code commenter
-Plugin 'scrooloose/nerdcommenter'
+" Plugin 'scrooloose/nerdcommenter'
 " Class/module browser
 Plugin 'majutsushi/tagbar'
 " Code and files fuzzy finder
@@ -61,7 +61,7 @@ Plugin 'fisadev/vim-ctrlp-cmdpalette'
 " Zen coding
 Plugin 'mattn/emmet-vim'
 " Maybe the best Git integration
-Plugin 'tpope/vim-fugitive'
+" Plugin 'tpope/vim-fugitive'
 " Tab list panel
 Plugin 'kien/tabman.vim'
 " Airline
@@ -70,7 +70,7 @@ Plugin 'vim-airline/vim-airline-themes'
 " Consoles as buffers
 Plugin 'rosenfeld/conque-term'
 " Pending tasks list
-Plugin 'fisadev/FixedTaskList.vim'
+"Plugin 'fisadev/FixedTaskList.vim'
 " Surround
 Plugin 'tpope/vim-surround'
 " Autoclose
@@ -94,13 +94,13 @@ Plugin 'mhinz/vim-signify'
 " Automatically sort python imports
 Plugin 'fisadev/vim-isort'
 " Drag visual blocks arround
-Plugin 'fisadev/dragvisuals.vim'
+"Plugin 'fisadev/dragvisuals.vim'
 " Window chooser
 Plugin 't9md/vim-choosewin'
 " Python and other languages code checker
 Plugin 'scrooloose/syntastic'
 " Paint css colors with the real color
-Plugin 'lilydjwg/colorizer'
+"Plugin 'lilydjwg/colorizer'
 " Pleasing colorschemes
 Plugin 'jnurmine/Zenburn'
 Plugin 'altercation/vim-colors-solarized'
@@ -114,22 +114,22 @@ Plugin 'altercation/vim-colors-solarized'
 " javascript complete after install the plugin, you must cd the install
 " directory and run `npm install`, then add a .tern-project config file
 " the doc at http://ternjs.net/doc/manual.html#vim
-Plugin 'marijnh/tern_for_vim'
+"Plugin 'marijnh/tern_for_vim'
 " Golang Plugins
-Plugin 'fatih/vim-go'
+"Plugin 'fatih/vim-go'
 " JSX syntax highlight.
-Plugin 'mxw/vim-jsx'
+"Plugin 'mxw/vim-jsx'
 " Markdown syntastic highlight
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 " Markdown realtime preview
 " Before you want to use it, please run
 " `sudo npm -g install instant-markdown-d`
-Plugin 'suan/vim-instant-markdown'
+"Plugin 'suan/vim-instant-markdown'
 " Handlebars syntax highlighting
 Plugin 'mustache/vim-mustache-handlebars'
 " Vue.js syntax and highlighting
-Plugin 'tao12345666333/vim-vue'
+"Plugin 'tao12345666333/vim-vue'
 " True Sublime Text style multiple selections for Vim
 Plugin 'terryma/vim-multiple-cursors'
 
@@ -606,5 +606,5 @@ cmap w!! w !sudo tee > /dev/null %
 " autosave when losing focus
 autocmd BufLeave,FocusLost * silent! wall
 
-" don't add stupid taps when pasting in from clipboard over ssh 
+" don't add stupid tabs when pasting in from clipboard over ssh 
 set paste
