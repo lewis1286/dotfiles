@@ -8,6 +8,10 @@ scriptencoding utf-8
 " Vundle initialization
 " Avoid modify this section, unless you are very sure of what you are doing
 
+
+" some text
+
+
 " no vi-compatible
 set nocompatible
 
