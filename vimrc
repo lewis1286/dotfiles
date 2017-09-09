@@ -1,6 +1,6 @@
 scriptencoding utf-8
 " ============================================================================
-" Author: Lewis Guignard 
+" Author: Lewis Guignard
 " Adapted From: https://github.com/tao12345666333/vim
 " Update Time: 2016-09-25
 
@@ -35,12 +35,12 @@ Plugin 'gmarik/vundle'
 " You can disable or add new ones here:
 
 " latex editor capability
-Plugin 'lervag/vimtex'
+"Plugin 'lervag/vimtex'
 
-" easy motion to find text <Leader> letter 
+" easy motion to find text <Leader> letter
 Plugin 'easymotion/vim-easymotion'
 
-" folding plugin 
+" folding plugin
 Plugin 'tmhedberg/SimpylFold'
 
 " Plugins from github repos:
@@ -51,7 +51,8 @@ Plugin 'fisadev/vim-debug.vim'
 Plugin 'scrooloose/nerdtree'
 
 " Code commenter
-" Plugin 'scrooloose/nerdcommenter'
+Plugin 'scrooloose/nerdcommenter'
+
 " Class/module browser
 Plugin 'majutsushi/tagbar'
 " Code and files fuzzy finder
@@ -59,7 +60,7 @@ Plugin 'ctrlpvim/ctrlp.vim'
 " Extension to ctrlp, for fuzzy command finder
 Plugin 'fisadev/vim-ctrlp-cmdpalette'
 " Zen coding
-Plugin 'mattn/emmet-vim'
+"Plugin 'mattn/emmet-vim'
 " Maybe the best Git integration
 " Plugin 'tpope/vim-fugitive'
 " Tab list panel
@@ -82,13 +83,13 @@ Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'klen/python-mode'
 " Better autocompletion
 Plugin 'Shougo/neocomplcache.vim'
+
 " Snippets manager (SnipMate), dependencies, and snippets repo
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
 Plugin 'honza/vim-snippets'
 Plugin 'garbas/vim-snipmate'
-" awesome colorscheme
-Plugin 'tomasr/molokai'
+
 " Git/mercurial/others diff icons on the side of the file lines
 Plugin 'mhinz/vim-signify'
 " Automatically sort python imports
@@ -99,15 +100,19 @@ Plugin 'fisadev/vim-isort'
 Plugin 't9md/vim-choosewin'
 " Python and other languages code checker
 Plugin 'scrooloose/syntastic'
+
 " Paint css colors with the real color
 "Plugin 'lilydjwg/colorizer'
+
 " Pleasing colorschemes
 Plugin 'jnurmine/Zenburn'
 Plugin 'altercation/vim-colors-solarized'
+Plugin 'tomasr/molokai'
+
 " Relative numbering of lines (0 is the current line)
 " (disabled by default because is very intrusive and can't be easily toggled
-" on/off. When the plugin is present, will always activate the relative 
-" numbering every time you go to normal mode. Author refuses to add a setting 
+" on/off. When the plugin is present, will always activate the relative
+" numbering every time you go to normal mode. Author refuses to add a setting
 " to avoid that)
 " Plugin 'myusuf3/numbers.vim'
 
@@ -160,7 +165,7 @@ endif
 let mapleader=","
 
 " Enable folding
-set foldmethod=indent 
+set foldmethod=indent
 set foldlevel=99
 " Enable folding with spacebar
 nnoremap <space> za
@@ -187,7 +192,7 @@ set autoread
 set confirm
 " no backup files
 set nobackup
-" other settings 
+" other settings
 set langmenu=zh_CN.UTF-8
 "set mouse=a
 set whichwrap+=<,>,h,l,[,]
@@ -199,7 +204,7 @@ set backspace=indent,eol,start
 "set clipboard=unnamedplus " copy to clipboard
 set clipboard=unnamed " copy to clipboard
 
-vnoremap <C-c> "*y 
+vnoremap <C-c> "*y
 
 " tab length exceptions on some file types
  autocmd FileType html setlocal shiftwidth=2 tabstop=2 softtabstop=2
@@ -209,7 +214,7 @@ vnoremap <C-c> "*y
 " auto open or close NERDTree
 autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-" show hidden files in NERDTree 
+" show hidden files in NERDTree
 "let NERDTreeShowHidden=1
 
 " always show status bar
@@ -221,7 +226,7 @@ set incsearch
 set hlsearch
 " search ignore case
 set ignorecase
-" muting search highlighting 
+" muting search highlighting
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
 " syntax highlight on
@@ -233,8 +238,8 @@ set nu
 " tab navigation mappings
 map tn :tabn<CR>
 map tp :tabp<CR>
-map tm :tabm 
-map tt :tabnew 
+map tm :tabm
+map tt :tabnew
 map ts :tab split<CR>
 map <C-S-Right> :tabn<CR>
 imap <C-S-Right> <ESC>:tabn<CR>
@@ -267,8 +272,8 @@ ca w!! w !sudo tee "%"
 command! -nargs=1 RecurGrep lvimgrep /<args>/gj ./**/*.* | lopen | set nowrap
 command! -nargs=1 RecurGrepFast silent exec 'lgrep! <q-args> ./**/*.*' | lopen
 " mappings to call them
-nmap ,R :RecurGrep 
-nmap ,r :RecurGrepFast 
+nmap ,R :RecurGrep
+nmap ,r :RecurGrepFast
 " mappings to call them with the default word as search text
 nmap ,wR :RecurGrep <cword><CR>
 nmap ,wr :RecurGrepFast <cword><CR>
@@ -276,9 +281,9 @@ nmap ,wr :RecurGrepFast <cword><CR>
 " use 256 colors when possible
 if &term =~? 'mlterm\|xterm\|xterm-256\|screen-256'
 	let &t_Co = 256
-    colorscheme zenburn 
+    colorscheme zenburn
 else
-    colorscheme zenburn 
+    colorscheme zenburn
 endif
 
 " colors for gvim
@@ -319,14 +324,14 @@ endif
 " Plugins settings and mappings
 " Edit them as you wish.
 
-" Tagbar ----------------------------- 
+" Tagbar -----------------------------
 
 " toggle tagbar display
 map <F4> :TagbarToggle<CR>
 " autofocus on tagbar open
 let g:tagbar_autofocus = 1
 
-" NERDTree ----------------------------- 
+" NERDTree -----------------------------
 
 " toggle nerdtree display
 map <F3> :NERDTreeToggle<CR>
@@ -410,7 +415,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_javascript_checkers = ['eslint']
 " don't put icons on the sign column (it hides the vcs status icons of signify)
 let g:syntastic_enable_signs = 0
-" custom icons (enable them if you use a patched font, and enable the previous 
+" custom icons (enable them if you use a patched font, and enable the previous
 " setting)
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '⚠'
@@ -436,7 +441,7 @@ nmap ,o :RopeFindOccurrences<CR>
 " NeoComplCache ------------------------------
 
 " most of them not documented because I'm not sure how they work
-" (docs aren't good, had to do a lot of trial and error to make 
+" (docs aren't good, had to do a lot of trial and error to make
 " it play nice)
 
 " Disable AutoComplPop.
@@ -562,7 +567,7 @@ function SetTitle()
         call setline(1,"#!/usr/bin/env python")
         call append(line("."),"Lewis Guignard")
         call append(line("."),"# coding=utf-8")
-	    call append(line(".")+1, "") 
+    call append(line(".")+1, "")
 
     elseif &filetype == 'ruby'
         call setline(1,"#!/usr/bin/env ruby")
@@ -597,16 +602,16 @@ let g:vim_markdown_frontmatter=1
 let g:instant_markdown_autostart = 0
 
 
-" add new line without entering insert mode 
+" add new line without entering insert mode
 nmap <S-Enter> O<Esc>
-nmap <CR> o<Esc> 
+nmap <CR> o<Esc>
 
-" write to protected files while not in sudo mode 
+" write to protected files while not in sudo mode
 " from
 " http://stackoverflow.com/questions/2600783/how-does-the-vim-write-with-sudo-trick-work
 cmap w!! w !sudo tee > /dev/null %
 " autosave when losing focus
 autocmd BufLeave,FocusLost * silent! wall
 
-" don't add stupid tabs when pasting in from clipboard over ssh 
+" don't add stupid tabs when pasting in from clipboard over ssh
 set paste
