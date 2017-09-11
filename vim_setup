@@ -4,9 +4,8 @@
 
 #from https://www.youtube.com/watch?v=YhqsjUUHj6g
 
-mkdir -p ~/.vim/autoload ~/.vim/bundle && \
- curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-
+# Pathogen install
+mkdir -p ~/.vim/autoload ~/.vim/bundle curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
 
 mkdir -p ~/.vim/colors && cd ~/.vim/colors
 wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400

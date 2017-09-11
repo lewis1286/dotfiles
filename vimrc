@@ -1,36 +1,26 @@
 
 "from https://www.youtube.com/watch?v=YhqsjUUHj6g
 
-" mkdir -p ~/.vim/autoload ~/.vim/bundle && \
-" curl -LSso ~/.vim/autoload/pathogen.vim https://tpo.pe/pathogen.vim
-
-
-" mkdir -p ~/.vim/colors && cd ~/.vim/colors
-" wget -O wombat256mod.vim http://www.vim.org/scripts/download_script.php?src_id=13400
-
-" mkdir -p ~/.vim/autoload ~/.vim/bundle
-" curl -so ~/.vim/autoload/pathogen.vim
-"  https://raw.github.com/tpope/vim-pathogen/HEAD/autoload/pathogen.vim
-
-" cd ~/.vim/bundle
-" git clone git://github.com/Lokaltog/vim-powerline.git
-" git clone https://github.com/kien/ctrlp.vim.git
-" git clone --recursive https://github.com/davidhalter/jedi-vim.git
-" git clone https://github.com/t9md/vim-choosewin
-" git clone https://github.com/scrooloose/nerdtree.git
-" mkdir -p ~/.vim/ftplugin
-" wget -O ~/.vim/ftplugin/python_editing.vim
-" http://www.vim.org/scripts/download_script.php?src_id=5492
-
+" load .vimrc on save
 autocmd! bufwritepost .vimrc source %
+
+
+" Startup Vundle
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+
 
 " nicer copy paste
 set pastetoggle=<F2>
 set clipboard=unnamed
-vnoremap <C-c> "*y
-set paste
+vnoremap <C-c> "+y
+
 set mouse=a " OSX = ALT/OPTION + click
 set backspace=indent,eol,start
+
 " Rebind <Leader> key
 let mapleader = ","
 
@@ -57,7 +47,6 @@ map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 
-
 " easier moving between tabs
 map <Leader>n <esc>:tabprevious<CR>
 map <Leader>m <esc>:tabnext<CR>
@@ -80,16 +69,9 @@ vnoremap > >gv  " better indentation
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
 
-
 " Color scheme
 set t_Co=256
-color wombat256mod
-
-
-" Enable syntax highlighting
-" You need to reload this file for the change to apply
-filetype off
-
+color zenburn
 
 " Showing line numbers and length
 set number  " show line numbers
@@ -103,11 +85,9 @@ highlight ColorColumn ctermbg=233
 vmap Q gq
 nmap Q gqap
 
-
 " other useful settings
 set history=700
 set undolevels=700
-
 
 " Real programmers don't use TABs but spaces
 set tabstop=4
@@ -115,7 +95,6 @@ set softtabstop=4
 set shiftwidth=4
 set shiftround
 set expandtab
-
 
 " Make search case insensitive
 set hlsearch
@@ -129,30 +108,29 @@ set nobackup
 set nowritebackup
 set noswapfile
 
-" Setup Pathogen to manage your plugins
-" "Now you can install any plugin into a .vim/bundle/plugin-name/ folder
-call pathogen#infect()
-call pathogen#helptags()
-
-filetype plugin indent on
-syntax on
-
-
 " ============================================================================
-" Python IDE Setup
+" Plugins
 " ============================================================================
 
-" Settings for vim-powerline
-set laststatus=2
+" Git awesomeness
+Plugin 'tpope/vim-fugitive'
 
-" Settings for ctrlp
+
+" Airline
+Plugin 'vim-airline/vim-airline'
+
+" ctrlp
+Plugin 'kien/ctrlp.vim'
 let g:ctrlp_max_height = 30
 set wildignore+=*.pyc
 set wildignore+=*_build/*
 set wildignore+=*/coverage/*
 
+" colorscheme
+Plugin 'altercation/vim-colors-solarized'
 
-" Settings for jedi-vim
+" jedi-vim
+Plugin 'davidhalter/jedi-vim'
 let g:jedi#usages_command= "<Leader>z"
 let g:jedi#popup_on_dot = 0
 let g:jedi#popup_select_first = 0
@@ -177,18 +155,33 @@ endfunction
 inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
 inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
 
+" choose window overlay
+Plugin 't9md/vim-choosewin'
+nmap - <Plug>(choosewin)
+let g:choosewin_overlay_enable=1
 
 " Python folding
 set nofoldenable
 
-" Choosewin
-nmap - <Plug>(choosewin)
-let g:choosewin_overlay_enable=1
-
 " NERDTree
 " auto open or close NERDTree
+Plugin 'scrooloose/nerdtree'
 autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+
+" Nerdcommenter
+Plugin 'scrooloose/nerdcommenter'
+
+" easymotions
+Plugin 'easymotion/vim-easymotion'
+
+
+call vundle#end()            " required
+filetype plugin indent on    " required
+" -------------------------- end plugins ----------------------
+
+
+
 
 
 
