@@ -1,6 +1,6 @@
 
 "from https://www.youtube.com/watch?v=YhqsjUUHj6g
-
+set encoding=utf-8
 " load .vimrc on save
 autocmd! bufwritepost .vimrc source %
 
@@ -24,6 +24,8 @@ set backspace=indent,eol,start
 " Rebind <Leader> key
 let mapleader = ","
 
+" jj escapes input mode
+inoremap jj <Esc>l
 
 " Bind nohl
 " removes highlighting of last text search
@@ -69,9 +71,6 @@ vnoremap > >gv  " better indentation
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
 
-" Color scheme
-set t_Co=256
-color zenburn
 
 " Showing line numbers and length
 set number  " show line numbers
@@ -126,15 +125,19 @@ set wildignore+=*.pyc
 set wildignore+=*_build/*
 set wildignore+=*/coverage/*
 
-" colorscheme
-Plugin 'altercation/vim-colors-solarized'
+" colors
+set t_Co=256
+syntax enable
+"colors solarized
+colors zenburn
+
 
 " jedi-vim
 Plugin 'davidhalter/jedi-vim'
 let g:jedi#usages_command= "<Leader>z"
 let g:jedi#popup_on_dot = 0
 let g:jedi#popup_select_first = 0
-map <Leader>b Oimport ipdb; ipdb.set_trace() # BREAKPOINT<C-c>
+map <Leader>b Oimport pdb; pdb.set_trace() # BREAKPOINT<C-c>
 
 
 " Better navigating through omnicomplete option list
@@ -159,7 +162,14 @@ inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
 Plugin 't9md/vim-choosewin'
 nmap - <Plug>(choosewin)
 let g:choosewin_overlay_enable=1
-
+let g:choosewin_color_label = {
+      \ 'gui': ['ForestGreen', 'white', 'bold'],
+      \ 'cterm': [9, 16]
+      \ }
+let g:choosewin_color_overlay= {
+      \ 'gui': ['ForestGreen', 'black'],
+      \ 'cterm': [240, 0]
+      \ }
 " Python folding
 set nofoldenable
 
@@ -168,13 +178,20 @@ set nofoldenable
 Plugin 'scrooloose/nerdtree'
 autocmd vimenter * if !argc() | NERDTree | endif
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+nnoremap <Leader>f :NERDTreeToggle<Enter>
+" NERDTree highlighting
+"Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
+
+" icons for NERDTree, powerline, etc
+"Plugin 'ryanoasis/vim-devicons'
+"set guifont=<FONT_NAME>:h<FONT_SIZE>
+"set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h11
 
 " Nerdcommenter
 Plugin 'scrooloose/nerdcommenter'
 
 " easymotions
 Plugin 'easymotion/vim-easymotion'
-
 
 call vundle#end()            " required
 filetype plugin indent on    " required
