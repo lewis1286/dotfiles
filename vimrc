@@ -4,14 +4,14 @@ set encoding=utf-8
 " load .vimrc on save
 autocmd! bufwritepost .vimrc source %
 
-
+" set default directory
+cd /Users/lewisguignard/Documents/CODE/corax_engine
 " Startup Vundle
 set nocompatible
 filetype off
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
-
 
 " nicer copy paste
 set pastetoggle=<F2>
@@ -111,25 +111,39 @@ set noswapfile
 " Plugins
 " ============================================================================
 
+" number toggling (relative vs absolute)
+Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+
 " Git awesomeness
 Plugin 'tpope/vim-fugitive'
 
+" Git in gutter
+Plugin 'airblade/vim-gitgutter'
 
 " Airline
 Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+let g:airline_solarized_bg='dark'
+" collect powerline fonts
+" see vim-airline documentation, and https://github.com/powerline/fonts
+"let g:airline_powerline_fonts = 1
+
+
 
 " ctrlp
+" http://ctrlpvim.github.io/ctrlp.vim/
 Plugin 'kien/ctrlp.vim'
-let g:ctrlp_max_height = 30
-set wildignore+=*.pyc
-set wildignore+=*_build/*
-set wildignore+=*/coverage/*
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_working_path_mode = 'rw'
 
 " colors
 set t_Co=256
 syntax enable
-"colors solarized
-colors zenburn
+set background=dark " light or dark
+map <Leader>l :set background=light
+
+"colors zenburn
+colors solarized
 
 
 " jedi-vim
@@ -176,16 +190,6 @@ set nofoldenable
 " NERDTree
 " auto open or close NERDTree
 Plugin 'scrooloose/nerdtree'
-autocmd vimenter * if !argc() | NERDTree | endif
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-nnoremap <Leader>f :NERDTreeToggle<Enter>
-" NERDTree highlighting
-"Plugin 'tiagofumo/vim-nerdtree-syntax-highlight'
-
-" icons for NERDTree, powerline, etc
-"Plugin 'ryanoasis/vim-devicons'
-"set guifont=<FONT_NAME>:h<FONT_SIZE>
-"set guifont=Droid\ Sans\ Mono\ for\ Powerline\ Plus\ Nerd\ File\ Types:h11
 
 " Nerdcommenter
 Plugin 'scrooloose/nerdcommenter'
@@ -193,13 +197,8 @@ Plugin 'scrooloose/nerdcommenter'
 " easymotions
 Plugin 'easymotion/vim-easymotion'
 
+Plugin 'townk/vim-autoclose'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 " -------------------------- end plugins ----------------------
-
-
-
-
-
-
-
