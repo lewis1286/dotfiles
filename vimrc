@@ -5,7 +5,7 @@ set encoding=utf-8
 autocmd! bufwritepost .vimrc source %
 
 " set default directory
-cd /Users/lewisguignard/Documents/CODE/corax_engine
+"cd /Users/lewisguignard/Documents/CODE/corax_engine
 " Startup Vundle
 set nocompatible
 filetype off
@@ -142,8 +142,8 @@ syntax enable
 set background=dark " light or dark
 map <Leader>l :set background=light
 
-"colors zenburn
-colors solarized
+colors zenburn
+"colors solarized
 
 
 " jedi-vim
