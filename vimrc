@@ -107,6 +107,9 @@ set nobackup
 set nowritebackup
 set noswapfile
 
+" save file as root even when not root
+command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+
 " ============================================================================
 " Plugins
 " ============================================================================
