@@ -1,8 +1,8 @@
-# useful commands
+# Setting up:
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+# copy into ~/.vim/colors/zenburn.vim:
+https://raw.githubusercontent.com/jnurmine/Zenburn/master/colors/zenburn.vim
 
-
-# toggle comments
-\c<space> 
 
 #search and replace and ask for confirmation each time
 :%s/foo/bar/gc
