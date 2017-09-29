@@ -4,8 +4,6 @@ set encoding=utf-8
 " load .vimrc on save
 autocmd! bufwritepost .vimrc source %
 
-" set default directory
-cd /Users/lewisguignard/Documents/CODE/corax_engine
 " Startup Vundle
 set nocompatible
 filetype off
@@ -142,8 +140,8 @@ syntax enable
 set background=dark " light or dark
 map <Leader>l :set background=light
 
-"colors zenburn
-colors solarized
+colors zenburn
+"colors solarized
 
 
 " jedi-vim
@@ -201,4 +199,8 @@ Plugin 'townk/vim-autoclose'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 " -------------------------- end plugins ----------------------
