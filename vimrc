@@ -29,9 +29,9 @@ inoremap jj <Esc>l
 
 " Bind nohl
 " removes highlighting of last text search
-noremap <C-n> :nohl<CR>
-vnoremap <C-n> :nohl<CR>
-inoremap <C-n> :nohl<CR>
+noremap <C-a> :nohl<CR>
+vnoremap <C-a> :nohl<CR>
+inoremap <C-a> :nohl<CR>
 
 " Quicksave command
 noremap <C-Z> :update<CR>
@@ -110,6 +110,9 @@ set noswapfile
 " ============================================================================
 " Plugins
 " ============================================================================
+" multiple cursors
+Plugin 'terryma/vim-multiple-cursors'
+
 
 " number toggling (relative vs absolute)
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
@@ -123,7 +126,8 @@ Plugin 'airblade/vim-gitgutter'
 " Airline
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-let g:airline_solarized_bg='dark'
+let g:airline_theme='zenburn'
+"let g:airline_solarized_bg='dark'
 " collect powerline fonts
 " see vim-airline documentation, and https://github.com/powerline/fonts
 "let g:airline_powerline_fonts = 1
@@ -143,7 +147,9 @@ set background=dark " light or dark
 map <Leader>l :set background=light
 
 "colors zenburn
-colors solarized
+"colors solarized
+"colors vrunchbang-dark
+colors gruvbox
 
 
 " jedi-vim
@@ -151,7 +157,10 @@ Plugin 'davidhalter/jedi-vim'
 let g:jedi#usages_command= "<Leader>z"
 let g:jedi#popup_on_dot = 0
 let g:jedi#popup_select_first = 0
-map <Leader>b Oimport pdb; pdb.set_trace() # BREAKPOINT<C-c>
+map <Leader>b oimport pdb; pdb.set_trace() # BREAKPOINT<C-c>
+
+" makes tab-completion for jedi-vim
+Plugin 'ervandew/supertab'
 
 
 " Better navigating through omnicomplete option list
@@ -189,15 +198,25 @@ set nofoldenable
 
 " NERDTree
 " auto open or close NERDTree
+map <Leader>q :NERDTreeToggle<CR>
 Plugin 'scrooloose/nerdtree'
+" hide __pycache__ files
+"let NERDTreeIgnore=['\__pycache__$[[dir]]']
 
 " Nerdcommenter
 Plugin 'scrooloose/nerdcommenter'
 
 " easymotions
 Plugin 'easymotion/vim-easymotion'
+" one leader key activates
+map <Leader> <Plug>(easymotion-prefix)
+
 
 Plugin 'townk/vim-autoclose'
+
+" make color hex codes etc color highlighted
+"Plugin 'chrisbra/colorizer'
+
 
 call vundle#end()            " required
 filetype plugin indent on    " required
