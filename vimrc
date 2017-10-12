@@ -4,8 +4,6 @@ set encoding=utf-8
 " load .vimrc on save
 autocmd! bufwritepost .vimrc source %
 
-" set default directory
-cd /Users/lewisguignard/Documents/CODE/corax_engine
 " Startup Vundle
 set nocompatible
 filetype off
@@ -106,6 +104,9 @@ set smartcase
 set nobackup
 set nowritebackup
 set noswapfile
+
+" save file as root even when not root
+command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
 " ============================================================================
 " Plugins
@@ -220,4 +221,8 @@ Plugin 'townk/vim-autoclose'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
 " -------------------------- end plugins ----------------------
