@@ -106,7 +106,7 @@ set nowritebackup
 set noswapfile
 
 " save file as root even when not root
-command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
 " ============================================================================
 " Plugins
@@ -134,24 +134,25 @@ let g:airline_theme='zenburn'
 "let g:airline_powerline_fonts = 1
 
 
-
 " ctrlp
 " http://ctrlpvim.github.io/ctrlp.vim/
 Plugin 'kien/ctrlp.vim'
 set runtimepath^=~/.vim/bundle/ctrlp.vim
-let g:ctrlp_working_path_mode = 'rw'
+let g:ctrlp_working_path_mode = 'a'
 
 " colors
 set t_Co=256
 syntax enable
 set background=dark " light or dark
-map <Leader>l :set background=light
+map <Leader>l :set background=light <CR>
+
+map <Leader>t :set background=dark <CR>
 
 "colors zenburn
 "colors solarized
 "colors vrunchbang-dark
-colors gruvbox
-
+"colors gruvbox
+Plugin 'flazz/vim-colorschemes'
 
 " jedi-vim
 Plugin 'davidhalter/jedi-vim'
@@ -203,6 +204,7 @@ map <Leader>q :NERDTreeToggle<CR>
 Plugin 'scrooloose/nerdtree'
 " hide __pycache__ files
 "let NERDTreeIgnore=['\__pycache__$[[dir]]']
+let NERDTreeChDirMode=2 " change CWD to root when root is changed"
 
 " Nerdcommenter
 Plugin 'scrooloose/nerdcommenter'
@@ -218,11 +220,21 @@ Plugin 'townk/vim-autoclose'
 " make color hex codes etc color highlighted
 "Plugin 'chrisbra/colorizer'
 
-
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-
+" markdown
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
-" -------------------------- end plugins ----------------------
+Plugin 'JamshedVesuna/vim-markdown-preview'
+let g:markdown_fenced_languages=['ruby', 'python', 'bash=sh']
+let g:markdown_syntax_conceal=1
+
+Plugin 'tpope/vim-surround'
+
+" linter
+Plugin 'w0rp/ale'
+
+" TypeScript highlighting
+Plugin 'leafgarland/typescript-vim'
+"-------------------------- end plugins ----------------------
