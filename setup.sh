@@ -11,6 +11,11 @@ cd ~
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 
 
+#Python (Anaconda distribution)
+cd ~
+wget https://repo.continuum.io/archive/Anaconda3-5.1.0-Linux-x86_64.sh
+chmod +x Anaconada3-5.1.0-Linux-x86_64.sh
+./Anaconada3-5.1.0-Linux-x86_64.sh
 
 #nvim
 echo 'setting up neovim..'
@@ -21,6 +26,9 @@ chmod u+x nvim.appimage
 mkdir ~/.config
 mkdir ~/.config/nvim/
 echo 'set runtimepath^=~/.vim runtimepath+=~/.vim/after \nlet &packpath = &runtimepath\nsource ~/.vimrc' > ~/.config/nvim/init.vim
+
+# for python support
+pip install neovim
 
 # vundle for git
 mkdir -p ~/.vim/bundle
@@ -46,8 +54,6 @@ sudo apt-get install nextcloud-client
 # background
 
 
-#Python (Anaconda distribution)
-cd ~
-wget https://repo.continuum.io/archive/Anaconda3-5.1.0-Linux-x86_64.sh
-chmod +x Anaconada3-5.1.0-Linux-x86_64.sh
-./Anaconada3-5.1.0-Linux-x86_64.sh
+
+
+
