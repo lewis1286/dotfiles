@@ -1,6 +1,5 @@
 
 
-"from https://www.youtube.com/watch?v=YhqsjUUHj6g
 set encoding=utf-8
 " load .vimrc on save
 autocmd! bufwritepost .vimrc source %
@@ -22,7 +21,6 @@ vnoremap <C-c> "+y
 
 " same as above but ignore errors for no name files, read only files
 ":au FocusLost * silent! wa
-
 
 
 
