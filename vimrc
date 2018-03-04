@@ -186,7 +186,7 @@ let g:UltiSnipsSnippetsDir = "~/.vim/bundle/ultisnips/UltiSnips"
 
 
 " easy debugger
-map <Leader>b oimport pdb; pdb.set_trace() # BREAKPOINT<C-c>
+"map <Leader>b oimport pdb; pdb.set_trace() # BREAKPOINT<C-c>
 
 " choose window overlay
 Plugin 't9md/vim-choosewin'
@@ -200,8 +200,8 @@ let g:choosewin_color_overlay= {
       \ 'gui': ['ForestGreen', 'black'],
       \ 'cterm': [240, 0]
       \ }
-" Python folding
-set nofoldenable
+"Python folding
+"set nofoldenable
 
 " NERDTree
 map <Leader>q :NERDTreeToggle<CR>
@@ -248,6 +248,16 @@ Plugin 'xolox/vim-misc'
 :set tags=./tags;
 :let g:easytags_dynamic_files = 1
 
+" python mode (big ass plugin!!)
+Plugin 'klen/python-mode'
+let g:pymode_python = 'python3'
+let g:pymode_trim_whitespaces = 1 " trim unused whitespace
+let g:pymode_options_max_line_length = 79
+let g:pymode_folding = 1
+let g:pymode_doc = 1
+let g:pymode_doc_bind = 'K'
+let g:pymode_lint_ignore = ["E501"]
+"let g:pymode_rope = 1
 
 " ----------- enable sql syntax highlighting in python files ----------
 "function! TextEnableCodeSnip(filetype,start,end,textSnipHl) abort
