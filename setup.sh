@@ -46,10 +46,10 @@ sed -e "\$aalias cl=\'clear\'" ~/.zshrc
 sed -e "\$aZSH_THEME=\"terminalparty\"" ~/.zshrc
 
 
-#Nextcloud
-sudo add-apt-repository ppa:nextcloud-devs/client
-sudo apt-get update
-sudo apt-get install nextcloud-client
+# Nextcloud
+#sudo add-apt-repository ppa:nextcloud-devs/client
+#sudo apt-get update
+#sudo apt-get install nextcloud-client
 # remember to open nextcloud through the GUI to get it running in the
 # background
 
