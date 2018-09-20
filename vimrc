@@ -1,5 +1,5 @@
 
-"from https://www.youtube.com/watch?v=YhqsjUUHj6g
+
 set encoding=utf-8
 " load .vimrc on save
 autocmd! bufwritepost .vimrc source %
@@ -19,6 +19,16 @@ set pastetoggle=<F2>
 
 "set mouse=a " OSX = ALT/OPTION + click
 "set backspace=indent,eol,start
+" write file when change focus
+:au FocusLost * :wa
+
+" same as above but ignore errors for no name files, read only files
+":au FocusLost * silent! wa
+
+
+
+"set mouse=a " OSX = ALT/OPTION + click
+set backspace=indent,eol,start
 
 " Rebind <Leader> key
 let mapleader = ","
@@ -46,14 +56,17 @@ noremap <C-a> :nohl<CR>
 vnoremap <C-a> :nohl<CR>
 inoremap <C-a> :nohl<CR>
 
-" Quicksave command
-noremap <C-Z> :update<CR>
-vnoremap <C-Z> <C-C>:update<CR>
-inoremap <C-Z> <C-O>:update<CR>
+ "Quicksave command
+"noremap <C-Z> :update<CR>
+"vnoremap <C-Z> <C-C>:update<CR>
+"inoremap <C-Z> <C-O>:update<CR>
 
 " Quick quit command
-noremap <Leader>e :quit<CR>  " Quit current window
-noremap <Leader>E :qa!<CR>   " Quit all windows
+"noremap <Leader>e :quit<CR>  " Quit current window
+"noremap <Leader>E :qa!<CR>   " Quit all windows
+
+
+"noremap <Leader>a o<Esc>
 
 " bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
 " Every unnecessary keystroke that can be saved is good for your health :)
@@ -72,6 +85,8 @@ set scrolloff=3
 " map sort function to a key
 vnoremap <Leader>s :sort<CR>
 
+" Jump to previous file
+noremap <Leader>3 <C-^>
 
 " easier moving of code blocks
 " Try to go into visual mode (v), thenselect several lines of code here and
@@ -133,39 +148,50 @@ Plugin 'terryma/vim-multiple-cursors'
 " number toggling (relative vs absolute)
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 
+
 " Git awesomeness
 Plugin 'tpope/vim-fugitive'
 
+
 " Git in gutter
 Plugin 'airblade/vim-gitgutter'
+
 
 " Airline
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 let g:airline_theme='zenburn'
-"let g:airline_solarized_bg='dark'
+let g:airline_solarized_bg='dark'
 " collect powerline fonts
 " see vim-airline documentation, and https://github.com/powerline/fonts
 "let g:airline_powerline_fonts = 1
 
-" ctrlp  http://ctrlpvim.github.io/ctrlp.vim/
+
+" ctrlp badass file searcing
+" http://ctrlpvim.github.io/ctrlp.vim/
 Plugin 'kien/ctrlp.vim'
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_working_path_mode = 'a'
+
+" better ctrlp for python
+"Plugin 'FelikZ/ctrlp-py-matcher'
+"let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
+
+
 
 " colors
 set t_Co=256
 syntax enable
 set background=dark " light or dark
 map <Leader>l :set background=light <CR>
-
 map <Leader>t :set background=dark <CR>
 
-"colors zenburn
 "colors solarized
 "colors vrunchbang-dark
-colors gruvbox
 Plugin 'flazz/vim-colorschemes'
+"colors zenburn
+"colorscheme onedark
+colors gruvbox
 
 " jedi-vim
 "Plugin 'davidhalter/jedi-vim'
@@ -173,28 +199,19 @@ Plugin 'flazz/vim-colorschemes'
 "let g:jedi#popup_on_dot = 0
 "let g:jedi#popup_select_first = 0
 map <Leader>b oimport pdb; pdb.set_trace() # BREAKPOINT<C-c>
+" Dope ass snippets
+Plugin 'SirVer/ultisnips'
+" Snippets are separated from the engine. Add this if you want them:
+Plugin 'honza/vim-snippets'
+" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsSnippetsDir = "~/.vim/bundle/ultisnips/UltiSnips"
 
-" makes tab-completion for jedi-vim
-Plugin 'ervandew/supertab'
 
-
-" Better navigating through omnicomplete option list
-" " See
-" http://stackoverflow.com/questions/2170023/how-to-map-keys-for-popup-menu-in-vim
-set completeopt=longest,menuone
-function! OmniPopup(action)
-    if pumvisible()
-        if a:action == 'j'
-            return "\<C-N>"
-        elseif a:action == 'k'
-            return "\<C-P>"
-        endif
-    endif
-    return a:action
-endfunction
-
-inoremap <silent><C-j> <C-R>=OmniPopup('j')<CR>
-inoremap <silent><C-k> <C-R>=OmniPopup('k')<CR>
+" easy debugger
+"map <Leader>b oimport pdb; pdb.set_trace() # BREAKPOINT<C-c>
 
 " choose window overlay
 Plugin 't9md/vim-choosewin'
@@ -208,17 +225,15 @@ let g:choosewin_color_overlay= {
       \ 'gui': ['ForestGreen', 'black'],
       \ 'cterm': [240, 0]
       \ }
-" Python folding
-set nofoldenable
+"Python folding
+"set nofoldenable
 
 " NERDTree
-" auto open or close NERDTree
 map <Leader>q :NERDTreeToggle<CR>
 Plugin 'scrooloose/nerdtree'
 " hide __pycache__ files
 "let NERDTreeIgnore=['\__pycache__$[[dir]]']
 let NERDTreeChDirMode=2 " change CWD to root when root is changed"
-
 " Nerdcommenter
 Plugin 'scrooloose/nerdcommenter'
 
@@ -228,14 +243,6 @@ Plugin 'easymotion/vim-easymotion'
 map <Leader> <Plug>(easymotion-prefix)
 
 
-Plugin 'townk/vim-autoclose'
-
-" make color hex codes etc color highlighted
-"Plugin 'chrisbra/colorizer'
-
-call vundle#end()            " required
-filetype plugin indent on    " required
-
 " markdown
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
@@ -243,13 +250,101 @@ Plugin 'JamshedVesuna/vim-markdown-preview'
 let g:markdown_fenced_languages=['ruby', 'python', 'bash=sh']
 let g:markdown_syntax_conceal=1
 
-Plugin 'tpope/vim-surround'
-
-" linter
-Plugin 'w0rp/ale'
 
 " TypeScript highlighting
 Plugin 'leafgarland/typescript-vim'
+
+
+"---------------- debugging plugins -------------------------
+
+
+Plugin 'sql.vim--Stinson'
+
+" python syntax .. maybe it will highlight sql queries:
+Plugin 'hdima/python-syntax'
+let python_highlight_all = 1
+
+
+" automatically update ctags (needs exuberant ctags on box running vim)
+Plugin 'xolox/vim-easytags'
+Plugin 'xolox/vim-misc'
+
+" set dynamic tags file to current project
+:set tags=./tags;
+:let g:easytags_dynamic_files = 1
+
+" python mode (big ass plugin!!)
+Plugin 'klen/python-mode'
+let g:pymode_python = 'python3'
+let g:pymode_trim_whitespaces = 1 " trim unused whitespace
+let g:pymode_options_max_line_length = 79
+let g:pymode_folding = 1
+let g:pymode_doc = 1
+let g:pymode_doc_bind = 'K'
+let g:pymode_lint_ignore = ["E501"]
+"let g:pymode_rope = 1
+
+" ----------- enable sql syntax highlighting in python files ----------
+"function! TextEnableCodeSnip(filetype,start,end,textSnipHl) abort
+  "let ft=toupper(a:filetype)
+  "let group='textGroup'.ft
+  "if exists('b:current_syntax')
+    "let s:current_syntax=b:current_syntax
+    "" Remove current syntax definition, as some syntax files (e.g. cpp.vim)
+    "" do nothing if b:current_syntax is defined.
+    "unlet b:current_syntax
+  "endif
+  "execute 'syntax include @'.group.' syntax/'.a:filetype.'.vim'
+  "try
+    "execute 'syntax include @'.group.' after/syntax/'.a:filetype.'.vim'
+  "catch
+  "endtry
+  "if exists('s:current_syntax')
+    "let b:current_syntax=s:current_syntax
+  "else
+    "unlet b:current_syntax
+  "endif
+  "execute 'syntax region textSnip'.ft.'
+  "\ matchgroup='.a:textSnipHl.'
+  "\ start="'.a:start.'" end="'.a:end.'"
+  "\ contains=@'.group
+"endfunction
+"au FileType python call TextEnableCodeSnip('sql', "'''", "'''", 'SpecialComment')
+" -------------------------------------------------------------------
+
+
+
+" make color hex codes etc color highlighted
+"Plugin 'chrisbra/colorizer'
+
+
+"Plugin 'tpope/vim-surround'
+
+
+"Plugin 'townk/vim-autoclose'
+
+" tagging (using ctags for tag, see: https://andrew.stwrt.ca/posts/vim-ctags/
+Plugin 'majutsushi/tagbar'
+noremap <Leader>e :TagbarToggle<CR>
+
+
+" Linting
+"Plugin 'w0rp/ale'
+
+
+" jedi-vim
+"Plugin 'davidhalter/jedi-vim'
+"let g:jedi#usages_command= "<Leader>z"
+"let g:jedi#popup_on_dot = 0
+"let g:jedi#popup_select_first = 0
+" makes tab-completion for jedi-vim
+"Plugin 'ervandew/supertab'
 "-------------------------- end plugins ----------------------
 " Disable plugins on start (TODO: add diable line numbering)
 ":au VimEnter * :GitGutterDisable
+call vundle#end()            " required
+filetype plugin indent on    " required
+
+
+
+
