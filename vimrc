@@ -13,14 +13,29 @@ Plugin 'VundleVim/Vundle.vim'
 
 " nicer copy paste
 set pastetoggle=<F2>
-set clipboard=unnamed
-vnoremap <C-c> "+y
+"set clipboard=unnamed
+"vnoremap <C-c> "*y
 
-set mouse=a " OSX = ALT/OPTION + click
-set backspace=indent,eol,start
+
+"set mouse=a " OSX = ALT/OPTION + click
+"set backspace=indent,eol,start
 
 " Rebind <Leader> key
 let mapleader = ","
+
+nmap <leader>d :GitGutterToggle <return> :set relativenumber! <return> :set number! <return>
+  "Copy to clipboard
+"set clipboard+=unnamedplus
+"vnoremap  <leader>y  +y
+"nnoremap  <leader>Y  +yg_
+"nnoremap  <leader>y  +y
+"nnoremap  <leader>yy  +yy
+
+  "Paste from clipboard
+"nnoremap <leader>p +p
+"nnoremap <leader>P +P
+"vnoremap <leader>p +p
+"vnoremap <leader>P +P
 
 " jj escapes input mode
 inoremap jj <Esc>l
@@ -71,7 +86,7 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 
 
 " Showing line numbers and length
-set number  " show line numbers
+"set number  " show line numbers
 set tw=79   " width of document (used by gd)
 set nowrap  " don't automatically wrap on load
 set fo-=t   " don't automatically wrap text when typing
@@ -133,9 +148,7 @@ let g:airline_theme='zenburn'
 " see vim-airline documentation, and https://github.com/powerline/fonts
 "let g:airline_powerline_fonts = 1
 
-
-" ctrlp
-" http://ctrlpvim.github.io/ctrlp.vim/
+" ctrlp  http://ctrlpvim.github.io/ctrlp.vim/
 Plugin 'kien/ctrlp.vim'
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_working_path_mode = 'a'
@@ -151,14 +164,14 @@ map <Leader>t :set background=dark <CR>
 "colors zenburn
 "colors solarized
 "colors vrunchbang-dark
-"colors gruvbox
+colors gruvbox
 Plugin 'flazz/vim-colorschemes'
 
 " jedi-vim
-Plugin 'davidhalter/jedi-vim'
-let g:jedi#usages_command= "<Leader>z"
-let g:jedi#popup_on_dot = 0
-let g:jedi#popup_select_first = 0
+"Plugin 'davidhalter/jedi-vim'
+"let g:jedi#usages_command= "<Leader>z"
+"let g:jedi#popup_on_dot = 0
+"let g:jedi#popup_select_first = 0
 map <Leader>b oimport pdb; pdb.set_trace() # BREAKPOINT<C-c>
 
 " makes tab-completion for jedi-vim
@@ -238,3 +251,5 @@ Plugin 'w0rp/ale'
 " TypeScript highlighting
 Plugin 'leafgarland/typescript-vim'
 "-------------------------- end plugins ----------------------
+" Disable plugins on start (TODO: add diable line numbering)
+":au VimEnter * :GitGutterDisable
