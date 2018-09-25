@@ -17,8 +17,7 @@ set pastetoggle=<F2>
 "vnoremap <C-c> "*y
 
 
-"set mouse=a " OSX = ALT/OPTION + click
-"set backspace=indent,eol,start
+set mouse=n " mouse mode in normal mode for clicking, not in visual for copying
 " write file when change focus
 :au FocusLost * :wa
 
@@ -33,7 +32,8 @@ set backspace=indent,eol,start
 " Rebind <Leader> key
 let mapleader = ","
 
-nmap <leader>d :GitGutterToggle <return> :set relativenumber! <return> :set number! <return>
+"nmap <leader>d :GitGutterToggle <return> :set relativenumber! <return> :set number! <return>
+nmap <leader>d :set relativenumber! <return> :set number! <return>
   "Copy to clipboard
 "set clipboard+=unnamedplus
 "vnoremap  <leader>y  +y
@@ -55,18 +55,6 @@ inoremap jj <Esc>l
 noremap <C-a> :nohl<CR>
 vnoremap <C-a> :nohl<CR>
 inoremap <C-a> :nohl<CR>
-
- "Quicksave command
-"noremap <C-Z> :update<CR>
-"vnoremap <C-Z> <C-C>:update<CR>
-"inoremap <C-Z> <C-O>:update<CR>
-
-" Quick quit command
-"noremap <Leader>e :quit<CR>  " Quit current window
-"noremap <Leader>E :qa!<CR>   " Quit all windows
-
-
-"noremap <Leader>a o<Esc>
 
 " bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
 " Every unnecessary keystroke that can be saved is good for your health :)
@@ -101,10 +89,10 @@ au InsertLeave * match ExtraWhitespace /\s\+$/
 
 
 " Showing line numbers and length
-"set number  " show line numbers
+set number  " show line numbers
 set tw=79   " width of document (used by gd)
-set nowrap  " don't automatically wrap on load
-set fo-=t   " don't automatically wrap text when typing
+set wrap  " don't automatically wrap on load
+"set fo-=t   " don't automatically wrap text when typing
 set colorcolumn=80
 highlight ColorColumn ctermbg=233
 
@@ -141,6 +129,11 @@ command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 " ============================================================================
 " Plugins
 " ============================================================================
+
+" Auto closing for [{( etc.
+Plugin 'Townk/vim-autoclose'
+
+
 " multiple cursors
 Plugin 'terryma/vim-multiple-cursors'
 
@@ -150,11 +143,11 @@ Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 
 
 " Git awesomeness
-Plugin 'tpope/vim-fugitive'
+"Plugin 'tpope/vim-fugitive'
 
 
 " Git in gutter
-Plugin 'airblade/vim-gitgutter'
+"Plugin 'airblade/vim-gitgutter'
 
 
 " Airline
@@ -162,8 +155,8 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 let g:airline_theme='zenburn'
 let g:airline_solarized_bg='dark'
-" collect powerline fonts
-" see vim-airline documentation, and https://github.com/powerline/fonts
+ "collect powerline fonts
+ "see vim-airline documentation, and https://github.com/powerline/fonts
 "let g:airline_powerline_fonts = 1
 
 
@@ -193,6 +186,7 @@ Plugin 'flazz/vim-colorschemes'
 "colorscheme onedark
 colors gruvbox
 
+
 " jedi-vim
 "Plugin 'davidhalter/jedi-vim'
 "let g:jedi#usages_command= "<Leader>z"
@@ -209,10 +203,6 @@ let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 let g:UltiSnipsSnippetsDir = "~/.vim/bundle/ultisnips/UltiSnips"
 
-
-" easy debugger
-"map <Leader>b oimport pdb; pdb.set_trace() # BREAKPOINT<C-c>
-
 " choose window overlay
 Plugin 't9md/vim-choosewin'
 nmap - <Plug>(choosewin)
@@ -226,7 +216,7 @@ let g:choosewin_color_overlay= {
       \ 'cterm': [240, 0]
       \ }
 "Python folding
-"set nofoldenable
+set nofoldenable
 
 " NERDTree
 map <Leader>q :NERDTreeToggle<CR>
@@ -238,21 +228,21 @@ let NERDTreeChDirMode=2 " change CWD to root when root is changed"
 Plugin 'scrooloose/nerdcommenter'
 
 " easymotions
-Plugin 'easymotion/vim-easymotion'
-" one leader key activates
-map <Leader> <Plug>(easymotion-prefix)
+"Plugin 'easymotion/vim-easymotion'
+"" one leader key activates
+"map <Leader> <Plug>(easymotion-prefix)
 
 
 " markdown
-Plugin 'godlygeek/tabular'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'JamshedVesuna/vim-markdown-preview'
-let g:markdown_fenced_languages=['ruby', 'python', 'bash=sh']
-let g:markdown_syntax_conceal=1
+"Plugin 'godlygeek/tabular'
+"Plugin 'plasticboy/vim-markdown'
+"Plugin 'JamshedVesuna/vim-markdown-preview'
+"let g:markdown_fenced_languages=['ruby', 'python', 'bash=sh']
+"let g:markdown_syntax_conceal=1
 
 
 " TypeScript highlighting
-Plugin 'leafgarland/typescript-vim'
+"Plugin 'leafgarland/typescript-vim'
 
 
 "---------------- debugging plugins -------------------------
@@ -281,8 +271,15 @@ let g:pymode_options_max_line_length = 79
 let g:pymode_folding = 1
 let g:pymode_doc = 1
 let g:pymode_doc_bind = 'K'
-let g:pymode_lint_ignore = ["E501"]
-"let g:pymode_rope = 1
+let g:pymode_lint = 0
+let g:pymode_lint_ignore = ["E501", "E0100"]
+let g:pymode_rope = 1
+let g:pymode_rope_completion = 1
+let g:pymode_rope_complete_on_dot = 1
+let g:pymode_rope_completion_bind = '<C-Space>'
+let g:pymode_rope_autoimport = 0
+let g:pymode_rope_autoimport_modules = ['os', 'pandas', 'datetime', 'numpy']
+let g:pymode_rope_autoimport_import_after_complete = 0
 
 " ----------- enable sql syntax highlighting in python files ----------
 "function! TextEnableCodeSnip(filetype,start,end,textSnipHl) abort
@@ -316,7 +313,6 @@ let g:pymode_lint_ignore = ["E501"]
 
 " make color hex codes etc color highlighted
 "Plugin 'chrisbra/colorizer'
-
 
 "Plugin 'tpope/vim-surround'
 
