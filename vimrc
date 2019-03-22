@@ -29,11 +29,12 @@ set mouse=n " mouse mode in normal mode for clicking, not in visual for copying
 "set mouse=a " OSX = ALT/OPTION + click
 set backspace=indent,eol,start
 
+
 " Rebind <Leader> key
 let mapleader = ","
 
-"nmap <leader>d :GitGutterToggle <return> :set relativenumber! <return> :set number! <return>
-nmap <leader>d :set relativenumber! <return> :set number! <return>
+nmap <leader>d :GitGutterToggle <return> :set relativenumber! <return> :set number! <return>
+"nmap <leader>d :set relativenumber! <return> :set number! <return>
   "Copy to clipboard
 "set clipboard+=unnamedplus
 "vnoremap  <leader>y  +y
@@ -47,6 +48,8 @@ nmap <leader>d :set relativenumber! <return> :set number! <return>
 "vnoremap <leader>p +p
 "vnoremap <leader>P +P
 
+" move text to new line and get back to normal mode
+nmap <Leader>w a<return><Esc>
 " jj escapes input mode
 inoremap jj <Esc>l
 
@@ -147,7 +150,7 @@ Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 
 
 " Git in gutter
-"Plugin 'airblade/vim-gitgutter'
+Plugin 'airblade/vim-gitgutter'
 
 
 " Airline
@@ -228,7 +231,7 @@ let NERDTreeChDirMode=2 " change CWD to root when root is changed"
 Plugin 'scrooloose/nerdcommenter'
 
 " easymotions
-"Plugin 'easymotion/vim-easymotion'
+Plugin 'easymotion/vim-easymotion'
 "" one leader key activates
 "map <Leader> <Plug>(easymotion-prefix)
 
@@ -268,7 +271,7 @@ Plugin 'klen/python-mode'
 let g:pymode_python = 'python3'
 let g:pymode_trim_whitespaces = 1 " trim unused whitespace
 let g:pymode_options_max_line_length = 79
-let g:pymode_folding = 1
+"let g:pymode_folding = 1
 let g:pymode_doc = 1
 let g:pymode_doc_bind = 'K'
 let g:pymode_lint = 0
