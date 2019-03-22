@@ -1,5 +1,3 @@
-
-
 set encoding=utf-8
 " load .vimrc on save
 autocmd! bufwritepost .vimrc source %
@@ -13,18 +11,10 @@ Plugin 'VundleVim/Vundle.vim'
 
 " nicer copy paste
 set pastetoggle=<F2>
-"set clipboard=unnamed
-"vnoremap <C-c> "*y
-
 
 set mouse=n " mouse mode in normal mode for clicking, not in visual for copying
 " write file when change focus
 :au FocusLost * :wa
-
-" same as above but ignore errors for no name files, read only files
-":au FocusLost * silent! wa
-
-
 
 "set mouse=a " OSX = ALT/OPTION + click
 set backspace=indent,eol,start
@@ -34,19 +24,6 @@ set backspace=indent,eol,start
 let mapleader = ","
 
 nmap <leader>d :GitGutterToggle <return> :set relativenumber! <return> :set number! <return>
-"nmap <leader>d :set relativenumber! <return> :set number! <return>
-  "Copy to clipboard
-"set clipboard+=unnamedplus
-"vnoremap  <leader>y  +y
-"nnoremap  <leader>Y  +yg_
-"nnoremap  <leader>y  +y
-"nnoremap  <leader>yy  +yy
-
-  "Paste from clipboard
-"nnoremap <leader>p +p
-"nnoremap <leader>P +P
-"vnoremap <leader>p +p
-"vnoremap <leader>P +P
 
 " move text to new line and get back to normal mode
 nmap <Leader>w a<return><Esc>
@@ -136,22 +113,17 @@ command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 " Auto closing for [{( etc.
 Plugin 'Townk/vim-autoclose'
 
-
 " multiple cursors
 Plugin 'terryma/vim-multiple-cursors'
-
 
 " number toggling (relative vs absolute)
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 
-
 " Git awesomeness
 "Plugin 'tpope/vim-fugitive'
 
-
 " Git in gutter
 Plugin 'airblade/vim-gitgutter'
-
 
 " Airline
 Plugin 'vim-airline/vim-airline'
@@ -169,12 +141,6 @@ Plugin 'kien/ctrlp.vim'
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_working_path_mode = 'a'
 
-" better ctrlp for python
-"Plugin 'FelikZ/ctrlp-py-matcher'
-"let g:ctrlp_match_func = { 'match': 'pymatcher#PyMatch' }
-
-
-
 " colors
 set t_Co=256
 syntax enable
@@ -190,12 +156,8 @@ Plugin 'flazz/vim-colorschemes'
 colors gruvbox
 
 
-" jedi-vim
-"Plugin 'davidhalter/jedi-vim'
-"let g:jedi#usages_command= "<Leader>z"
-"let g:jedi#popup_on_dot = 0
-"let g:jedi#popup_select_first = 0
 map <Leader>b oimport pdb; pdb.set_trace() # BREAKPOINT<C-c>
+
 " Dope ass snippets
 Plugin 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
@@ -225,7 +187,7 @@ set nofoldenable
 map <Leader>q :NERDTreeToggle<CR>
 Plugin 'scrooloose/nerdtree'
 " hide __pycache__ files
-"let NERDTreeIgnore=['\__pycache__$[[dir]]']
+
 let NERDTreeChDirMode=2 " change CWD to root when root is changed"
 " Nerdcommenter
 Plugin 'scrooloose/nerdcommenter'
@@ -233,22 +195,7 @@ Plugin 'scrooloose/nerdcommenter'
 " easymotions
 Plugin 'easymotion/vim-easymotion'
 "" one leader key activates
-"map <Leader> <Plug>(easymotion-prefix)
-
-
-" markdown
-"Plugin 'godlygeek/tabular'
-"Plugin 'plasticboy/vim-markdown'
-"Plugin 'JamshedVesuna/vim-markdown-preview'
-"let g:markdown_fenced_languages=['ruby', 'python', 'bash=sh']
-"let g:markdown_syntax_conceal=1
-
-
-" TypeScript highlighting
-"Plugin 'leafgarland/typescript-vim'
-
-
-"---------------- debugging plugins -------------------------
+map <Leader> <Plug>(easymotion-prefix)
 
 
 Plugin 'sql.vim--Stinson'
@@ -284,42 +231,7 @@ let g:pymode_rope_autoimport = 0
 let g:pymode_rope_autoimport_modules = ['os', 'pandas', 'datetime', 'numpy']
 let g:pymode_rope_autoimport_import_after_complete = 0
 
-" ----------- enable sql syntax highlighting in python files ----------
-"function! TextEnableCodeSnip(filetype,start,end,textSnipHl) abort
-  "let ft=toupper(a:filetype)
-  "let group='textGroup'.ft
-  "if exists('b:current_syntax')
-    "let s:current_syntax=b:current_syntax
-    "" Remove current syntax definition, as some syntax files (e.g. cpp.vim)
-    "" do nothing if b:current_syntax is defined.
-    "unlet b:current_syntax
-  "endif
-  "execute 'syntax include @'.group.' syntax/'.a:filetype.'.vim'
-  "try
-    "execute 'syntax include @'.group.' after/syntax/'.a:filetype.'.vim'
-  "catch
-  "endtry
-  "if exists('s:current_syntax')
-    "let b:current_syntax=s:current_syntax
-  "else
-    "unlet b:current_syntax
-  "endif
-  "execute 'syntax region textSnip'.ft.'
-  "\ matchgroup='.a:textSnipHl.'
-  "\ start="'.a:start.'" end="'.a:end.'"
-  "\ contains=@'.group
-"endfunction
-"au FileType python call TextEnableCodeSnip('sql', "'''", "'''", 'SpecialComment')
-" -------------------------------------------------------------------
-
-
-
-" make color hex codes etc color highlighted
-"Plugin 'chrisbra/colorizer'
-
 "Plugin 'tpope/vim-surround'
-
-
 "Plugin 'townk/vim-autoclose'
 
 " tagging (using ctags for tag, see: https://andrew.stwrt.ca/posts/vim-ctags/
@@ -327,20 +239,7 @@ Plugin 'majutsushi/tagbar'
 noremap <Leader>e :TagbarToggle<CR>
 
 
-" Linting
-"Plugin 'w0rp/ale'
-
-
-" jedi-vim
-"Plugin 'davidhalter/jedi-vim'
-"let g:jedi#usages_command= "<Leader>z"
-"let g:jedi#popup_on_dot = 0
-"let g:jedi#popup_select_first = 0
-" makes tab-completion for jedi-vim
-"Plugin 'ervandew/supertab'
 "-------------------------- end plugins ----------------------
-" Disable plugins on start (TODO: add diable line numbering)
-":au VimEnter * :GitGutterDisable
 call vundle#end()            " required
 filetype plugin indent on    " required
 
