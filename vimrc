@@ -239,9 +239,20 @@ Plugin 'majutsushi/tagbar'
 noremap <Leader>e :TagbarToggle<CR>
 
 
+" Plugin Playground
+
+" markdown folding
+"Plugin 'masukomi/vim-markdown-folding'
+
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+:set conceallevel=2
 "-------------------------- end plugins ----------------------
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+syntax on
+set foldmethod=syntax
 
 
 
