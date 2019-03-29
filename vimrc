@@ -194,7 +194,7 @@ Plugin 'scrooloose/nerdcommenter'
 
 " easymotions
 Plugin 'easymotion/vim-easymotion'
-"" one leader key activates
+" one leader key activates
 map <Leader> <Plug>(easymotion-prefix)
 
 
@@ -253,7 +253,4 @@ filetype plugin indent on    " required
 
 syntax on
 set foldmethod=syntax
-
-
-
 
