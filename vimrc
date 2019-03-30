@@ -59,14 +59,13 @@ noremap <Leader>3 <C-^>
 " easier moving of code blocks
 " Try to go into visual mode (v), thenselect several lines of code here and
 " then press ``>`` several times.
-vnoremap < <gv  " better indentation
-vnoremap > >gv  " better indentation
+vnoremap < <gv
+vnoremap > >gv
 
 " Show whitespace
 " MUST be inserted BEFORE the colorscheme command
 autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
 au InsertLeave * match ExtraWhitespace /\s\+$/
-
 
 " Showing line numbers and length
 set number  " show line numbers
@@ -119,9 +118,6 @@ Plugin 'terryma/vim-multiple-cursors'
 " number toggling (relative vs absolute)
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 
-" Git awesomeness
-"Plugin 'tpope/vim-fugitive'
-
 " Git in gutter
 Plugin 'airblade/vim-gitgutter'
 
@@ -144,11 +140,7 @@ set background=dark " light or dark
 map <Leader>l :set background=light <CR>
 map <Leader>t :set background=dark <CR>
 
-"colors solarized
-"colors vrunchbang-dark
 Plugin 'flazz/vim-colorschemes'
-"colors zenburn
-"colorscheme onedark
 colors gruvbox
 
 
@@ -183,7 +175,6 @@ set nofoldenable
 map <Leader>q :NERDTreeToggle<CR>
 Plugin 'scrooloose/nerdtree'
 " hide __pycache__ files
-
 let NERDTreeChDirMode=2 " change CWD to root when root is changed"
 " Nerdcommenter
 Plugin 'scrooloose/nerdcommenter'
@@ -227,22 +218,14 @@ let g:pymode_rope_autoimport = 0
 let g:pymode_rope_autoimport_modules = ['os', 'pandas', 'datetime', 'numpy']
 let g:pymode_rope_autoimport_import_after_complete = 0
 
-"Plugin 'tpope/vim-surround'
-"Plugin 'townk/vim-autoclose'
 
-" tagging (using ctags for tag, see: https://andrew.stwrt.ca/posts/vim-ctags/
-Plugin 'majutsushi/tagbar'
-noremap <Leader>e :TagbarToggle<CR>
-
-
-" Plugin Playground
-
-" markdown folding
-"Plugin 'masukomi/vim-markdown-folding'
-
+" Markdown
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 :set conceallevel=2
+
+" Plugin Playground
+
 "-------------------------- end plugins ----------------------
 call vundle#end()            " required
 filetype plugin indent on    " required
