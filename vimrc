@@ -128,11 +128,7 @@ Plugin 'airblade/vim-gitgutter'
 " Airline
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-let g:airline_theme='zenburn'
-let g:airline_solarized_bg='dark'
- "collect powerline fonts
- "see vim-airline documentation, and https://github.com/powerline/fonts
-"let g:airline_powerline_fonts = 1
+let g:airline_theme='biogoo'
 
 
 " ctrlp badass file searcing
