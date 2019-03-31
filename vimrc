@@ -118,6 +118,9 @@ Plugin 'terryma/vim-multiple-cursors'
 " number toggling (relative vs absolute)
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 
+" Git awesomeness
+Plugin 'tpope/vim-fugitive'
+
 " Git in gutter
 Plugin 'airblade/vim-gitgutter'
 
@@ -125,6 +128,9 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 let g:airline_theme='biogoo'
+" getting powerline fonts to work:
+" https://powerline.readthedocs.io/en/master/installation.html#patched-fonts
+let g:airline_powerline_fonts = 1
 
 
 " ctrlp badass file searcing
