@@ -56,6 +56,9 @@ vnoremap <Leader>s :sort<CR>
 " Jump to previous file
 noremap <Leader>3 <C-^>
 
+" remove whitespace
+nnoremap <leader>s :let _s=@/ <Bar> :%s/\s\+$//e <Bar> :let @/=_s <Bar> :nohl <Bar> :unlet _s <CR>
+
 " easier moving of code blocks
 " Try to go into visual mode (v), thenselect several lines of code here and
 " then press ``>`` several times.
@@ -231,6 +234,14 @@ Plugin 'plasticboy/vim-markdown'
 :set conceallevel=2
 
 " Plugin Playground
+
+" Arduino
+Plugin 'stevearc/vim-arduino'
+nnoremap <buffer> <leader>av :ArduinoVerify<CR>
+nnoremap <buffer> <leader>au :ArduinoUpload<CR>
+nnoremap <buffer> <leader>as :ArduinoUploadAndSerial<CR>
+
+
 
 "-------------------------- end plugins ----------------------
 call vundle#end()            " required
