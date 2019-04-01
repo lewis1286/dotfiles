@@ -106,3 +106,8 @@ then
     source $HOME/.local_aliases
 fi
 
+if [ -f $HOME/.local_paths ]
+then
+    source $HOME/.local_paths
+fi
+
