@@ -122,19 +122,30 @@ Plugin 'terryma/vim-multiple-cursors'
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 
 " Git awesomeness
-Plugin 'tpope/vim-fugitive'
+"Plugin 'tpope/vim-fugitive'
 
 " Git in gutter
 Plugin 'airblade/vim-gitgutter'
 
-" Airline
+" ----------------------------------------------------------
+"                       Airline
+" ----------------------------------------------------------
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 let g:airline_theme='biogoo'
-" getting powerline fonts to work:
-" https://powerline.readthedocs.io/en/master/installation.html#patched-fonts
-"let g:airline_powerline_fonts = 1
+let g:airline_theme='light'
 
+" Airline slows down esc mode, below fixes!
+" https://medium.com/usevim/powerline-escape-fix-e849fd07aad0
+if ! has('gui_running')
+  set ttimeoutlen=10
+  augroup FastEscape
+    autocmd!
+    au InsertEnter * set timeoutlen=0
+    au InsertLeave * set timeoutlen=1000
+  augroup END
+endif
+" ----------------------------------------------------------
 
 " ctrlp badass file searcing
 " http://ctrlpvim.github.io/ctrlp.vim/
@@ -210,22 +221,21 @@ Plugin 'xolox/vim-misc'
 :let g:easytags_dynamic_files = 1
 
 " python mode (big ass plugin!!)
-"Plugin 'klen/python-mode'
-"let g:pymode_python = 'python3'
-"let g:pymode_trim_whitespaces = 1 " trim unused whitespace
-"let g:pymode_options_max_line_length = 79
-""let g:pymode_folding = 1
-"let g:pymode_doc = 1
-"let g:pymode_doc_bind = 'K'
-"let g:pymode_lint = 0
-"let g:pymode_lint_ignore = ["E501", "E0100"]
-"let g:pymode_rope = 1
-"let g:pymode_rope_completion = 1
-"let g:pymode_rope_complete_on_dot = 1
-"let g:pymode_rope_completion_bind = '<C-Space>'
-"let g:pymode_rope_autoimport = 0
-"let g:pymode_rope_autoimport_modules = ['os', 'pandas', 'datetime', 'numpy']
-"let g:pymode_rope_autoimport_import_after_complete = 0
+Plugin 'klen/python-mode'
+let g:pymode_python = 'python3'
+let g:pymode_trim_whitespaces = 1 " trim unused whitespace
+let g:pymode_options_max_line_length = 79
+let g:pymode_doc = 1
+let g:pymode_doc_bind = 'K'
+let g:pymode_lint = 0
+let g:pymode_lint_ignore = ["E501", "E0100"]
+let g:pymode_rope = 1
+let g:pymode_rope_completion = 1
+let g:pymode_rope_complete_on_dot = 1
+let g:pymode_rope_completion_bind = '<C-Space>'
+let g:pymode_rope_autoimport = 0
+let g:pymode_rope_autoimport_modules = ['os', 'pandas', 'datetime', 'numpy']
+let g:pymode_rope_autoimport_import_after_complete = 0
 
 
 " Markdown
@@ -233,7 +243,8 @@ Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 :set conceallevel=2
 
-" Plugin Playground
+
+"-------------------------- playground:  ----------------------
 
 " Arduino
 Plugin 'stevearc/vim-arduino'
@@ -241,7 +252,15 @@ nnoremap <buffer> <leader>av :ArduinoVerify<CR>
 nnoremap <buffer> <leader>au :ArduinoUpload<CR>
 nnoremap <buffer> <leader>as :ArduinoUploadAndSerial<CR>
 
+Plugin 'scrooloose/syntastic'
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
 
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
 
 "-------------------------- end plugins ----------------------
 call vundle#end()            " required
