@@ -32,9 +32,7 @@ inoremap jj <Esc>l
 
 " Bind nohl
 " removes highlighting of last text search
-noremap <C-a> :nohl<CR>
-vnoremap <C-a> :nohl<CR>
-inoremap <C-a> :nohl<CR>
+map <Leader>l :nohl <CR>
 
 " bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
 " Every unnecessary keystroke that can be saved is good for your health :)
@@ -46,6 +44,7 @@ map <c-h> <c-w>h
 " easier moving between tabs
 map <Leader>n <esc>:tabprevious<CR>
 map <Leader>m <esc>:tabnext<CR>
+
 
 " set scrolling no less than three lines from screen border
 set scrolloff=3
@@ -146,8 +145,8 @@ let g:ctrlp_working_path_mode = 'a'
 set t_Co=256
 syntax enable
 set background=dark " light or dark
-map <Leader>l :set background=light <CR>
-map <Leader>t :set background=dark <CR>
+"map <Leader>l :set background=light <CR>
+"map <Leader>t :set background=dark <CR>
 
 Plugin 'flazz/vim-colorschemes'
 colors gruvbox
