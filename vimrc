@@ -146,9 +146,7 @@ let g:ctrlp_working_path_mode = 'a'
 " colors
 set t_Co=256
 syntax enable
-set background=dark " light or dark
-"map <Leader>l :set background=light <CR>
-"map <Leader>t :set background=dark <CR>
+set background=dark
 
 Plugin 'flazz/vim-colorschemes'
 colors gruvbox
@@ -211,21 +209,18 @@ Plugin 'xolox/vim-misc'
 :let g:easytags_dynamic_files = 1
 
 " python mode (big ass plugin!!)
-"Plugin 'klen/python-mode'
-"let g:pymode_python = 'python3'
-"let g:pymode_trim_whitespaces = 1 " trim unused whitespace
-"let g:pymode_options_max_line_length = 79
-"let g:pymode_doc = 1
-"let g:pymode_doc_bind = 'K'
-"let g:pymode_lint = 0
-"let g:pymode_lint_ignore = ["E501", "E0100"]
-"let g:pymode_rope = 0
-"let g:pymode_rope_completion = 0
-"let g:pymode_rope_complete_on_dot = 0
-"let g:pymode_rope_completion_bind = '<C-Space>'
-"let g:pymode_rope_autoimport = 0
-"let g:pymode_rope_autoimport_modules = ['os', 'pandas', 'datetime', 'numpy']
-"let g:pymode_rope_autoimport_import_after_complete = 0
+Plugin 'klen/python-mode'
+let g:pymode_python = 'python3'
+let g:pymode_trim_whitespaces = 1 " trim unused whitespace
+let g:pymode_options_max_line_length = 79
+let g:pymode_doc = 1
+let g:pymode_doc_bind = 'K'
+let g:pymode_lint = 0
+let g:pymode_lint_ignore = ["E501", "E0100"]
+let g:pymode_rope = 0
+let g:pymode_rope_completion = 0
+let g:pymode_rope_autoimport = 0
+let g:pymode_rope_autoimport_import_after_complete = 0
 
 
 " Markdown
@@ -243,6 +238,10 @@ nnoremap <buffer> <leader>au :ArduinoUpload<CR>
 nnoremap <buffer> <leader>as :ArduinoUploadAndSerial<CR>
 
 Plugin 'christoomey/vim-tmux-navigator'
+
+" better python folding
+"Plugin 'tmhedberg/simpylfold'
+
 "Plugin 'scrooloose/syntastic'
 "set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}
