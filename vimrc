@@ -184,6 +184,23 @@ let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_set_highlights = 1
+" Linting:
+" Select flake8 and pylint, and ignore pylint, so only flake8 is run.
+let g:ale_linters = {'python': ['flake8', 'pylint']}
+"let g:ale_linters_ignore = {'python': ['pylint']}
+" Fixing:
+let g:ale_fixers = {
+\   'python': [
+\       'add_blank_lines_for_python_control_statements',
+\       'autopep8',
+\       'black',
+\       'isort',
+\       'yapf',
+\       'remove_trailing_lines',
+\       'trim_whitespace',
+\       'eslint',
+\   ],
+\}
 
 
 " choose window overlay
@@ -223,18 +240,18 @@ Plugin 'xolox/vim-misc'
 :let g:easytags_dynamic_files = 1
 
 " python mode (big ass plugin!!)
-Plugin 'klen/python-mode'
-let g:pymode_python = 'python3'
-let g:pymode_trim_whitespaces = 1 " trim unused whitespace
-let g:pymode_options_max_line_length = 79
-let g:pymode_doc = 1
-let g:pymode_doc_bind = 'K'
-let g:pymode_lint = 0
-let g:pymode_lint_ignore = ["E501", "E0100"]
-let g:pymode_rope = 0
-let g:pymode_rope_completion = 0
-let g:pymode_rope_autoimport = 0
-let g:pymode_rope_autoimport_import_after_complete = 0
+"Plugin 'klen/python-mode'
+"let g:pymode_python = 'python3'
+"let g:pymode_trim_whitespaces = 1 " trim unused whitespace
+"let g:pymode_options_max_line_length = 79
+"let g:pymode_doc = 1
+"let g:pymode_doc_bind = 'K'
+"let g:pymode_lint = 0
+"let g:pymode_lint_ignore = ["E501", "E0100"]
+"let g:pymode_rope = 0
+"let g:pymode_rope_completion = 0
+"let g:pymode_rope_autoimport = 0
+"let g:pymode_rope_autoimport_import_after_complete = 0
 
 
 " Markdown
