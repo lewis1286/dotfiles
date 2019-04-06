@@ -231,6 +231,8 @@ Plugin 'plasticboy/vim-markdown'
 
 "-------------------------- playground:  ----------------------
 
+Plugin 'junegunn/goyo.vim'
+
 " Arduino
 Plugin 'stevearc/vim-arduino'
 nnoremap <buffer> <leader>av :ArduinoVerify<CR>
