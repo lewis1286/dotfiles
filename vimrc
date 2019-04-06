@@ -2,6 +2,14 @@ set encoding=utf-8
 " load .vimrc on save
 autocmd! bufwritepost .vimrc source %
 
+" historical undo
+if has('persistent_undo')
+    set undodir=$HOME/.vimundo
+    set undolevels=1000
+    set undoreload=10000
+    set undofile
+endif
+
 " Startup Vundle
 set nocompatible
 filetype off
@@ -159,10 +167,24 @@ Plugin 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsSnippetsDir = "~/.vim/bundle/ultisnips/UltiSnips"
+"let g:UltiSnipsExpandTrigger="<tab>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"let g:UltiSnipsSnippetsDir = "~/.vim/bundle/ultisnips/UltiSnips"
+
+"Plugin 'Valloric/YouCompleteMe'
+
+
+" Vim8/neovim linting and ?some code completion
+Plugin 'w0rp/ale'
+let g:ale_sign_column_always = 1
+" Integrate w/ Airline
+let g:airline#extensions#ale#enabled = 1
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+let g:ale_set_highlights = 1
+
 
 " choose window overlay
 Plugin 't9md/vim-choosewin'
