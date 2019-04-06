@@ -167,15 +167,7 @@ let g:UltiSnipsSnippetsDir = "~/.vim/bundle/ultisnips/UltiSnips"
 " choose window overlay
 Plugin 't9md/vim-choosewin'
 nmap - <Plug>(choosewin)
-let g:choosewin_overlay_enable=1
-let g:choosewin_color_label = {
-      \ 'gui': ['ForestGreen', 'white', 'bold'],
-      \ 'cterm': [9, 16]
-      \ }
-let g:choosewin_color_overlay= {
-      \ 'gui': ['ForestGreen', 'black'],
-      \ 'cterm': [240, 0]
-      \ }
+
 "Python folding
 set nofoldenable
 
