@@ -10,6 +10,13 @@ if has('persistent_undo')
     set undofile
 endif
 
+" ------------------------------------ temp for omni completion -----------
+" Enable autocompletion
+set omnifunc=syntaxcomplete#Complete
+" Select keyword as you type
+set completeopt=longest,menuone
+" ------------------------------------ temp for omni completion -----------
+
 " Startup Vundle
 set nocompatible
 filetype off
@@ -163,9 +170,9 @@ colors gruvbox
 map <Leader>b oimport pdb; pdb.set_trace() # BREAKPOINT<C-c>
 
 " Dope ass snippets
-Plugin 'SirVer/ultisnips'
+"Plugin 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
-Plugin 'honza/vim-snippets'
+"Plugin 'honza/vim-snippets'
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
 "let g:UltiSnipsExpandTrigger="<tab>"
 "let g:UltiSnipsJumpForwardTrigger="<c-b>"
@@ -174,8 +181,9 @@ Plugin 'honza/vim-snippets'
 
 "Plugin 'Valloric/YouCompleteMe'
 
-
+" ---------------------------------------------------------
 " Vim8/neovim linting and ?some code completion
+" ---------------------------------------------------------
 Plugin 'w0rp/ale'
 let g:ale_sign_column_always = 1
 " Integrate w/ Airline
@@ -184,10 +192,16 @@ let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
 let g:ale_set_highlights = 1
+
 " Linting:
 " Select flake8 and pylint, and ignore pylint, so only flake8 is run.
 let g:ale_linters = {'python': ['flake8', 'pylint']}
 "let g:ale_linters_ignore = {'python': ['pylint']}
+
+"Completion engine:
+" This setting must be set before ALE is loaded.
+let g:ale_completion_enabled = 1
+
 " Fixing:
 let g:ale_fixers = {
 \   'python': [
@@ -201,6 +215,21 @@ let g:ale_fixers = {
 \       'eslint',
 \   ],
 \}
+
+" ---------- Language Server Protocol ----------------
+Plugin 'prabirshrestha/async.vim'
+Plugin 'prabirshrestha/vim-lsp'
+
+if executable('pyls')
+    " pip install python-language-server
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'pyls',
+        \ 'cmd': {server_info->['pyls']},
+        \ 'whitelist': ['python'],
+        \ })
+endif
+" ---------------------------------------------------
+
 
 
 " choose window overlay
@@ -262,6 +291,23 @@ Plugin 'plasticboy/vim-markdown'
 
 "-------------------------- playground:  ----------------------
 
+Plugin 'Shougo/deoplete.nvim'
+Plugin 'zchee/deoplete-jedi'
+
+let g:deoplete#enable_at_startup = 1
+if !exists('g:deoplete#omni#input_patterns')
+  let g:deoplete#omni#input_patterns = {}
+endif
+
+"let g:deoplete#disable_auto_complete = 1
+let g:deoplete#auto_complete_delay = 300
+
+autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+" deoplete tab-complete
+inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+
+" Zen mode
 Plugin 'junegunn/goyo.vim'
 
 " Arduino
