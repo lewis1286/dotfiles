@@ -40,6 +40,8 @@ let mapleader = ","
 
 nmap <leader>d :GitGutterToggle <return> :set relativenumber! <return> :set number! <return>
 
+inoremap <leader>rc :vsplit ~/.vimrc
+
 " move text to new line and get back to normal mode
 nmap <Leader>w a<return><Esc>
 " jj escapes input mode
@@ -170,16 +172,15 @@ colors gruvbox
 map <Leader>b oimport pdb; pdb.set_trace() # BREAKPOINT<C-c>
 
 " Dope ass snippets
-"Plugin 'SirVer/ultisnips'
+Plugin 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
-"Plugin 'honza/vim-snippets'
+Plugin 'honza/vim-snippets'
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-"let g:UltiSnipsExpandTrigger="<tab>"
-"let g:UltiSnipsJumpForwardTrigger="<c-b>"
-"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-"let g:UltiSnipsSnippetsDir = "~/.vim/bundle/ultisnips/UltiSnips"
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+let g:UltiSnipsSnippetsDir = "~/.vim/bundle/ultisnips/Ultisnips/"
 
-"Plugin 'Valloric/YouCompleteMe'
 
 " ---------------------------------------------------------
 " Vim8/neovim linting and ?some code completion
@@ -196,38 +197,38 @@ let g:ale_set_highlights = 1
 " Linting:
 " Select flake8 and pylint, and ignore pylint, so only flake8 is run.
 let g:ale_linters = {'python': ['flake8', 'pylint']}
-"let g:ale_linters_ignore = {'python': ['pylint']}
+let g:ale_linters_ignore = {'python': ['pylint']}
 
 "Completion engine:
 " This setting must be set before ALE is loaded.
-let g:ale_completion_enabled = 1
+"let g:ale_completion_enabled = 1
 
-" Fixing:
-let g:ale_fixers = {
-\   'python': [
-\       'add_blank_lines_for_python_control_statements',
-\       'autopep8',
-\       'black',
-\       'isort',
-\       'yapf',
-\       'remove_trailing_lines',
-\       'trim_whitespace',
-\       'eslint',
-\   ],
-\}
+"" Fixing:
+"let g:ale_fixers = {
+"\   'python': [
+"\       'add_blank_lines_for_python_control_statements',
+"\       'autopep8',
+"\       'black',
+"\       'isort',
+"\       'yapf',
+"\       'remove_trailing_lines',
+"\       'trim_whitespace',
+"\       'eslint',
+"\   ],
+"\}
 
-" ---------- Language Server Protocol ----------------
-Plugin 'prabirshrestha/async.vim'
-Plugin 'prabirshrestha/vim-lsp'
+"" ---------- Language Server Protocol ----------------
+"Plugin 'prabirshrestha/async.vim'
+"Plugin 'prabirshrestha/vim-lsp'
 
-if executable('pyls')
-    " pip install python-language-server
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'pyls',
-        \ 'cmd': {server_info->['pyls']},
-        \ 'whitelist': ['python'],
-        \ })
-endif
+"if executable('pyls')
+    "" pip install python-language-server
+    "au User lsp_setup call lsp#register_server({
+        "\ 'name': 'pyls',
+        "\ 'cmd': {server_info->['pyls']},
+        "\ 'whitelist': ['python'],
+        "\ })
+"endif
 " ---------------------------------------------------
 
 
@@ -268,29 +269,28 @@ Plugin 'xolox/vim-misc'
 :set tags=./tags;
 :let g:easytags_dynamic_files = 1
 
-" python mode (big ass plugin!!)
-"Plugin 'klen/python-mode'
-"let g:pymode_python = 'python3'
-"let g:pymode_trim_whitespaces = 1 " trim unused whitespace
-"let g:pymode_options_max_line_length = 79
-"let g:pymode_doc = 1
-"let g:pymode_doc_bind = 'K'
-"let g:pymode_lint = 0
-"let g:pymode_lint_ignore = ["E501", "E0100"]
-"let g:pymode_rope = 0
-"let g:pymode_rope_completion = 0
-"let g:pymode_rope_autoimport = 0
-"let g:pymode_rope_autoimport_import_after_complete = 0
-
-
 " Markdown
 Plugin 'godlygeek/tabular'
 Plugin 'plasticboy/vim-markdown'
 :set conceallevel=2
 
+" Arduino
+Plugin 'stevearc/vim-arduino'
+nnoremap <buffer> <leader>av :ArduinoVerify<CR>
+nnoremap <buffer> <leader>au :ArduinoUpload<CR>
+nnoremap <buffer> <leader>as :ArduinoUploadAndSerial<CR>
 
-"-------------------------- playground:  ----------------------
+" <C-[hjkl]> across vim panes and tmux panes
+Plugin 'christoomey/vim-tmux-navigator'
 
+" Zen mode
+Plugin 'junegunn/goyo.vim'
+
+" ----------------------------------------------------------------------
+" -------------------------- playground:  ------------------------------
+" ----------------------------------------------------------------------
+
+" --------------- completion engine for nvim --------------------------
 Plugin 'Shougo/deoplete.nvim'
 Plugin 'zchee/deoplete-jedi'
 
@@ -300,36 +300,16 @@ if !exists('g:deoplete#omni#input_patterns')
 endif
 
 "let g:deoplete#disable_auto_complete = 1
-let g:deoplete#auto_complete_delay = 300
-
+let g:deoplete#auto_complete_delay = 700
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-" deoplete tab-complete
-inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+" deoplete tab-complete (vanilla is <C-n>, <C-p>)
+"inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+" ----------------------------------------------------------------------
+
+" Formatting (also do `pip install yapf`)
+Plugin 'sbdchd/neoformat'
 
 
-" Zen mode
-Plugin 'junegunn/goyo.vim'
-
-" Arduino
-Plugin 'stevearc/vim-arduino'
-nnoremap <buffer> <leader>av :ArduinoVerify<CR>
-nnoremap <buffer> <leader>au :ArduinoUpload<CR>
-nnoremap <buffer> <leader>as :ArduinoUploadAndSerial<CR>
-
-Plugin 'christoomey/vim-tmux-navigator'
-
-" better python folding
-"Plugin 'tmhedberg/simpylfold'
-
-"Plugin 'scrooloose/syntastic'
-"set statusline+=%#warningmsg#
-"set statusline+=%{SyntasticStatuslineFlag()}
-"set statusline+=%*
-
-"let g:syntastic_always_populate_loc_list = 1
-"let g:syntastic_auto_loc_list = 1
-"let g:syntastic_check_on_open = 1
-"let g:syntastic_check_on_wq = 0
 
 "-------------------------- end plugins ----------------------
 call vundle#end()            " required
