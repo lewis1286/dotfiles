@@ -2,7 +2,7 @@ set encoding=utf-8
 " load .vimrc on save
 autocmd! bufwritepost .vimrc source %
 
-" historical undo
+" historical undo (across saves)
 if has('persistent_undo')
     set undodir=$HOME/.vimundo
     set undolevels=1000
@@ -28,19 +28,23 @@ Plugin 'VundleVim/Vundle.vim'
 set pastetoggle=<F2>
 
 set mouse=n " mouse mode in normal mode for clicking, not in visual for copying
-" write file when change focus
+
+" write file when change focus THIS ISN'T WORKING
 :au FocusLost * :wa
 
 "set mouse=a " OSX = ALT/OPTION + click
 set backspace=indent,eol,start
 
-
+" ----------------------------------------------------------------------
+" ------------------       remapped keys          ----------------------
+" ----------------------------------------------------------------------
 " Rebind <Leader> key
 let mapleader = ","
 
 nmap <leader>d :GitGutterToggle <return> :set relativenumber! <return> :set number! <return>
+map <Leader>l :nohl <CR>
 
-inoremap <leader>rc :vsplit ~/.vimrc
+nmap <leader>v :vsplit ~/.vimrc<CR>
 
 " move text to new line and get back to normal mode
 nmap <Leader>w a<return><Esc>
@@ -50,7 +54,6 @@ inoremap jk <Esc>l
 
 " Bind nohl
 " removes highlighting of last text search
-map <Leader>l :nohl <CR>
 
 " bind Ctrl+<movement> keys to move around the windows, instead of using Ctrl+w + <movement>
 " Every unnecessary keystroke that can be saved is good for your health :)
@@ -60,8 +63,8 @@ map <c-l> <c-w>l
 map <c-h> <c-w>h
 
 " easier moving between tabs
-map <Leader>n <esc>:tabprevious<CR>
-map <Leader>m <esc>:tabnext<CR>
+"map <Leader>n <esc>:tabprevious<CR>
+"map <Leader>m <esc>:tabnext<CR>
 
 
 " set scrolling no less than three lines from screen border
@@ -197,7 +200,7 @@ let g:ale_set_highlights = 1
 " Linting:
 " Select flake8 and pylint, and ignore pylint, so only flake8 is run.
 let g:ale_linters = {'python': ['flake8', 'pylint']}
-let g:ale_linters_ignore = {'python': ['pylint']}
+"let g:ale_linters_ignore = {'python': ['pylint']}
 
 "Completion engine:
 " This setting must be set before ALE is loaded.

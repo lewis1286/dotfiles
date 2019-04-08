@@ -1,6 +1,21 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
+if [ -f $HOME/.aliases ]
+then
+    source $HOME/.aliases
+fi
+
+if [ -f $HOME/.local_aliases ]
+then
+    source $HOME/.local_aliases
+fi
+
+if [ -f $HOME/.local_paths ]
+then
+    source $HOME/.local_paths
+fi
+
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 export KEYTIMEOUT=1
@@ -11,7 +26,8 @@ export KEYTIMEOUT=1
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="cloud"
 #ZSH_THEME="terminalparty"
-ZSH_THEME="muse"
+#ZSH_THEME="muse"
+ZSH_THEME=$ZSH_THEME
 
 # Tmux aliae
 alias tn='tmux new -s ' # add session name after :)
@@ -103,18 +119,4 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-if [ -f $HOME/.aliases ]
-then
-    source $HOME/.aliases
-fi
-
-if [ -f $HOME/.local_aliases ]
-then
-    source $HOME/.local_aliases
-fi
-
-if [ -f $HOME/.local_paths ]
-then
-    source $HOME/.local_paths
-fi
 
