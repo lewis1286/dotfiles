@@ -1,3 +1,7 @@
+" Notes:
+" lifesaving vim python wrapping (save to .vim/indent/python.vim)
+" https://www.vim.org/scripts/script.php?script_id=974
+
 set encoding=utf-8
 " load .vimrc on save
 autocmd! bufwritepost .vimrc source %
@@ -47,7 +51,7 @@ map <Leader>l :nohl <CR>
 nmap <leader>v :vsplit ~/.vimrc<CR>
 
 " move text to new line and get back to normal mode
-nmap <Leader>w a<return><Esc>
+nmap <Leader>w ha<return><Esc>
 " jj escapes input mode
 inoremap jj <Esc>l
 inoremap jk <Esc>l
@@ -171,8 +175,7 @@ set background=dark
 Plugin 'flazz/vim-colorschemes'
 colors gruvbox
 
-
-map <Leader>b oimport pdb; pdb.set_trace() # BREAKPOINT<C-c>
+map <Leader>b Oimport pdb; pdb.set_trace() # BREAKPOINT<C-c>
 
 " Dope ass snippets
 Plugin 'SirVer/ultisnips'
@@ -242,6 +245,7 @@ nmap - <Plug>(choosewin)
 
 "Python folding
 set nofoldenable
+"Plugin 'tmhedberg/simpylfold'
 
 " NERDTree
 map <Leader>q :NERDTreeToggle<CR>
@@ -303,7 +307,7 @@ if !exists('g:deoplete#omni#input_patterns')
 endif
 
 "let g:deoplete#disable_auto_complete = 1
-let g:deoplete#auto_complete_delay = 700
+let g:deoplete#auto_complete_delay = 500
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 " deoplete tab-complete (vanilla is <C-n>, <C-p>)
 "inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
