@@ -52,6 +52,7 @@ nmap <Leader>w a<return><Esc>
 inoremap jj <Esc>l
 inoremap jk <Esc>l
 
+map <Leader>b oimport pdb; pdb.set_trace() # BREAKPOINT<C-c>
 " Bind nohl
 " removes highlighting of last text search
 
@@ -96,7 +97,7 @@ set tw=79   " width of document (used by gd)
 set wrap  " don't automatically wrap on load
 "set fo-=t   " don't automatically wrap text when typing
 set colorcolumn=80
-highlight ColorColumn ctermbg=233
+"highlight ColorColumn ctermbg=233
 
 " easier formatting of paragraphs
 vmap Q gq
@@ -163,16 +164,27 @@ Plugin 'kien/ctrlp.vim'
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_working_path_mode = 'a'
 
-" colors
-set t_Co=256
-syntax enable
+" -------------------------       colors          ----------------
+"set t_Co=256
+
+"Plugin 'flazz/vim-colorschemes' " big list of colorschemes
+
+" Had to manually download into .vim/colors and .vim/autoload
+Plugin 'joshdick/onedark.vim'
+
+if (has("nvim"))
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
+if (has("termguicolors"))
+  set termguicolors
+endif
+
+set termguicolors
+syntax on
 set background=dark
-
-Plugin 'flazz/vim-colorschemes'
-colors gruvbox
+colorscheme onedark
 
 
-map <Leader>b oimport pdb; pdb.set_trace() # BREAKPOINT<C-c>
 
 " Dope ass snippets
 Plugin 'SirVer/ultisnips'
@@ -257,9 +269,9 @@ Plugin 'easymotion/vim-easymotion'
 map <Leader> <Plug>(easymotion-prefix)
 
 
-Plugin 'sql.vim--Stinson'
+"Plugin 'sql.vim--Stinson'
 
-" python syntax .. maybe it will highlight sql queries:
+ "python syntax .. maybe it will highlight sql queries:
 Plugin 'hdima/python-syntax'
 let python_highlight_all = 1
 
