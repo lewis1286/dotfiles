@@ -54,7 +54,6 @@ nmap <leader>v :vsplit ~/.vimrc<CR>
 nmap <Leader>w ha<return><Esc>
 " jj escapes input mode
 inoremap jj <Esc>l
-inoremap jk <Esc>l
 
 " Bind nohl
 " removes highlighting of last text search
@@ -73,6 +72,9 @@ map <c-h> <c-w>h
 
 " set scrolling no less than three lines from screen border
 set scrolloff=3
+
+" open splits on right
+set splitright
 
 " map sort function to a key
 vnoremap <Leader>s :sort<CR>
@@ -175,7 +177,7 @@ set background=dark
 Plugin 'flazz/vim-colorschemes'
 colors gruvbox
 
-map <Leader>b Oimport pdb; pdb.set_trace() # BREAKPOINT<C-c>
+map <Leader>b Oimport pdb; pdb.set_trace()  # BREAKPOINT<C-c>
 
 " Dope ass snippets
 Plugin 'SirVer/ultisnips'
@@ -202,26 +204,17 @@ let g:ale_set_highlights = 1
 
 " Linting:
 " Select flake8 and pylint, and ignore pylint, so only flake8 is run.
-let g:ale_linters = {'python': ['flake8', 'pylint']}
+let g:ale_linters = {'python': ['flake8', 'pylint', 'isort']}
 "let g:ale_linters_ignore = {'python': ['pylint']}
 
-"Completion engine:
-" This setting must be set before ALE is loaded.
-"let g:ale_completion_enabled = 1
-
 "" Fixing:
-"let g:ale_fixers = {
-"\   'python': [
-"\       'add_blank_lines_for_python_control_statements',
-"\       'autopep8',
-"\       'black',
-"\       'isort',
-"\       'yapf',
-"\       'remove_trailing_lines',
-"\       'trim_whitespace',
-"\       'eslint',
-"\   ],
-"\}
+let g:ale_fixers = {
+\   'python': [
+\       'isort',
+\       'remove_trailing_lines',
+\       'trim_whitespace',
+\   ],
+\}
 
 "" ---------- Language Server Protocol ----------------
 "Plugin 'prabirshrestha/async.vim'
@@ -245,7 +238,7 @@ nmap - <Plug>(choosewin)
 
 "Python folding
 set nofoldenable
-"Plugin 'tmhedberg/simpylfold'
+Plugin 'tmhedberg/simpylfold'
 
 " NERDTree
 map <Leader>q :NERDTreeToggle<CR>
@@ -307,7 +300,7 @@ if !exists('g:deoplete#omni#input_patterns')
 endif
 
 "let g:deoplete#disable_auto_complete = 1
-let g:deoplete#auto_complete_delay = 500
+let g:deoplete#auto_complete_delay = 150
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 " deoplete tab-complete (vanilla is <C-n>, <C-p>)
 "inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
