@@ -1,3 +1,7 @@
+" Notes:
+" lifesaving vim python wrapping (save to .vim/indent/python.vim)
+" https://www.vim.org/scripts/script.php?script_id=974
+
 set encoding=utf-8
 " load .vimrc on save
 autocmd! bufwritepost .vimrc source %
@@ -47,7 +51,7 @@ map <Leader>l :nohl <CR>
 nmap <leader>v :vsplit ~/.vimrc<CR>
 
 " move text to new line and get back to normal mode
-nmap <Leader>w a<return><Esc>
+nmap <Leader>w ha<return><Esc>
 " jj escapes input mode
 inoremap jj <Esc>l
 inoremap jk <Esc>l
@@ -184,8 +188,6 @@ syntax on
 set background=dark
 colorscheme onedark
 
-
-
 " Dope ass snippets
 Plugin 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
@@ -214,7 +216,7 @@ let g:ale_set_highlights = 1
 let g:ale_linters = {'python': ['flake8', 'pylint']}
 "let g:ale_linters_ignore = {'python': ['pylint']}
 
-"Completion engine:
+"" Completion engine:
 " This setting must be set before ALE is loaded.
 "let g:ale_completion_enabled = 1
 
@@ -254,6 +256,7 @@ nmap - <Plug>(choosewin)
 
 "Python folding
 set nofoldenable
+Plugin 'tmhedberg/simpylfold'
 
 " NERDTree
 map <Leader>q :NERDTreeToggle<CR>
@@ -301,9 +304,6 @@ Plugin 'christoomey/vim-tmux-navigator'
 " Zen mode
 Plugin 'junegunn/goyo.vim'
 
-" ----------------------------------------------------------------------
-" -------------------------- playground:  ------------------------------
-" ----------------------------------------------------------------------
 
 " --------------- completion engine for nvim --------------------------
 Plugin 'Shougo/deoplete.nvim'
@@ -315,16 +315,19 @@ if !exists('g:deoplete#omni#input_patterns')
 endif
 
 "let g:deoplete#disable_auto_complete = 1
-let g:deoplete#auto_complete_delay = 700
+let g:deoplete#auto_complete_delay = 500
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 " deoplete tab-complete (vanilla is <C-n>, <C-p>)
 "inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-" ----------------------------------------------------------------------
 
 " Formatting (also do `pip install yapf`)
 Plugin 'sbdchd/neoformat'
 
-
+" ----------------------------------------------------------------------
+" -------------------------- playground:  ------------------------------
+" ----------------------------------------------------------------------
+" Playground is empty!
+" ----------------------------------------------------------------------
 
 "-------------------------- end plugins ----------------------
 call vundle#end()            " required
