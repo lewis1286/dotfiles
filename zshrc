@@ -27,13 +27,10 @@ export KEYTIMEOUT=1
 #ZSH_THEME="cloud"
 #ZSH_THEME="terminalparty"
 #ZSH_THEME="muse"
-ZSH_THEME=$ZSH_THEME
 
-# Tmux aliae
-alias tn='tmux new -s ' # add session name after :)
-alias ta='tmux attach -t ' # add session name here
-alias ts='tmux switch -t '
-alias tls='tmux list-sessions'
+# If we've set the theme, use that, otherwise, use the default
+ZSH_THEME=${ZSH_THEME:-cloud}
+
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
