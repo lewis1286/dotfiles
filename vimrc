@@ -14,12 +14,25 @@ if has('persistent_undo')
     set undofile
 endif
 
-" ------------------------------------ temp for omni completion -----------
+"--------------- clipboard  -----------
+" " Copy to clipboard
+vnoremap  <leader>y  "+y
+nnoremap  <leader>Y  "+yg_
+nnoremap  <leader>y  "+y
+nnoremap  <leader>yy  "+yy
+
+" " Paste from clipboard
+nnoremap <leader>p "+p
+nnoremap <leader>P "+P
+vnoremap <leader>p "+p
+vnoremap <leader>P "+P
+
+" ------------------ temp for omni completion -----------
 " Enable autocompletion
 set omnifunc=syntaxcomplete#Complete
 " Select keyword as you type
 set completeopt=longest,menuone
-" ------------------------------------ temp for omni completion -----------
+" ----------------- temp for omni completion -----------
 
 " Startup Vundle
 set nocompatible
@@ -31,12 +44,12 @@ Plugin 'VundleVim/Vundle.vim'
 " nicer copy paste
 set pastetoggle=<F2>
 
-set mouse=n " mouse mode in normal mode for clicking, not in visual for copying
+"set mouse=n " mouse mode in normal mode for clicking, not in visual for copying
+set mouse=a " OSX = ALT/OPTION + click
 
 " write file when change focus THIS ISN'T WORKING
 :au FocusLost * :wa
 
-"set mouse=a " OSX = ALT/OPTION + click
 set backspace=indent,eol,start
 
 " ----------------------------------------------------------------------
@@ -187,6 +200,7 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
+"set termguicolors
 syntax on
 set background=dark
 "colorscheme onedark

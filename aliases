@@ -1,3 +1,10 @@
 #!/bin/bash
 
 alias cl='clear'
+
+# Tmux aliae
+alias tmux='tmux -2'
+alias tn='tmux new -s ' # add session name after :)
+alias ta='tmux attach -t ' # add session name here
+alias ts='tmux switch -t '
+alias tls='tmux list-sessions'
