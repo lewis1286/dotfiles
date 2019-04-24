@@ -55,6 +55,7 @@ nmap <Leader>w ha<return><Esc>
 " jj escapes input mode
 inoremap jj <Esc>l
 
+map <Leader>b Oimport pdb; pdb.set_trace() # BREAKPOINT<C-c>
 " Bind nohl
 " removes highlighting of last text search
 
@@ -101,8 +102,6 @@ set number  " show line numbers
 set tw=79   " width of document (used by gd)
 set wrap  " don't automatically wrap on load
 "set fo-=t   " don't automatically wrap text when typing
-set colorcolumn=80
-highlight ColorColumn ctermbg=233
 
 " easier formatting of paragraphs
 vmap Q gq
@@ -169,15 +168,30 @@ Plugin 'kien/ctrlp.vim'
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_working_path_mode = 'a'
 
-" colors
-set t_Co=256
-syntax enable
+" -------------------------       colors          ----------------
+"set t_Co=256
+
+Plugin 'flazz/vim-colorschemes' " big list of colorschemes
+
+" Had to manually download into .vim/colors and .vim/autoload
+" do:
+" cd ~/.vim/colors && wget https://raw.githubusercontent.com/joshdick/onedark.vim/master/colors/onedark.vim 
+" cd ~/.vim/autoload && wget https://raw.githubusercontent.com/joshdick/onedark.vim/master/autoload/onedark.vim
+
+Plugin 'joshdick/onedark.vim'
+
+if (has("nvim"))
+  let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+endif
+if (has("termguicolors"))
+  set termguicolors
+endif
+
+syntax on
 set background=dark
-
-Plugin 'flazz/vim-colorschemes'
-colors gruvbox
-
-map <Leader>b Oimport pdb; pdb.set_trace()  # BREAKPOINT<C-c>
+"colorscheme onedark
+colorscheme gruvbox
+set colorcolumn=80
 
 " Dope ass snippets
 Plugin 'SirVer/ultisnips'
@@ -206,6 +220,10 @@ let g:ale_set_highlights = 1
 " Select flake8 and pylint, and ignore pylint, so only flake8 is run.
 let g:ale_linters = {'python': ['flake8', 'pylint', 'isort']}
 "let g:ale_linters_ignore = {'python': ['pylint']}
+
+"" Completion engine:
+" This setting must be set before ALE is loaded.
+"let g:ale_completion_enabled = 1
 
 "" Fixing:
 let g:ale_fixers = {
@@ -254,9 +272,9 @@ Plugin 'easymotion/vim-easymotion'
 map <Leader> <Plug>(easymotion-prefix)
 
 
-Plugin 'sql.vim--Stinson'
+"Plugin 'sql.vim--Stinson'
 
-" python syntax .. maybe it will highlight sql queries:
+ "python syntax .. maybe it will highlight sql queries:
 Plugin 'hdima/python-syntax'
 let python_highlight_all = 1
 
@@ -286,9 +304,6 @@ Plugin 'christoomey/vim-tmux-navigator'
 " Zen mode
 Plugin 'junegunn/goyo.vim'
 
-" ----------------------------------------------------------------------
-" -------------------------- playground:  ------------------------------
-" ----------------------------------------------------------------------
 
 " --------------- completion engine for nvim --------------------------
 Plugin 'Shougo/deoplete.nvim'
@@ -304,12 +319,15 @@ let g:deoplete#auto_complete_delay = 150
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 " deoplete tab-complete (vanilla is <C-n>, <C-p>)
 "inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-" ----------------------------------------------------------------------
 
 " Formatting (also do `pip install yapf`)
 Plugin 'sbdchd/neoformat'
 
-
+" ----------------------------------------------------------------------
+" -------------------------- playground:  ------------------------------
+" ----------------------------------------------------------------------
+" Playground is empty!
+" ----------------------------------------------------------------------
 
 "-------------------------- end plugins ----------------------
 call vundle#end()            " required

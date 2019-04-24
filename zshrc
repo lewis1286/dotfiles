@@ -27,7 +27,11 @@ export KEYTIMEOUT=1
 #ZSH_THEME="cloud"
 #ZSH_THEME="terminalparty"
 #ZSH_THEME="muse"
-ZSH_THEME=$ZSH_THEME
+if [[ -z "${ZSH_THEME}" ]]; then
+    ZSH_THEME = "muse"
+else
+    ZSH_THEME=$ZSH_THEME
+fi
 
 # Tmux aliae
 alias tn='tmux new -s ' # add session name after :)
