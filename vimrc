@@ -44,8 +44,8 @@ Plugin 'VundleVim/Vundle.vim'
 " nicer copy paste
 set pastetoggle=<F2>
 
-"set mouse=n " mouse mode in normal mode for clicking, not in visual for copying
-set mouse=a " OSX = ALT/OPTION + click
+set mouse=n " mouse mode in normal mode for clicking, not in visual for copying
+"set mouse=a " OSX = ALT/OPTION + click
 
 " write file when change focus THIS ISN'T WORKING
 :au FocusLost * :wa
@@ -340,7 +340,8 @@ Plugin 'sbdchd/neoformat'
 " ----------------------------------------------------------------------
 " -------------------------- playground:  ------------------------------
 " ----------------------------------------------------------------------
-" Playground is empty!
+Plugin 'mhinz/vim-startify'
+Plugin 'majutsushi/tagbar'
 " ----------------------------------------------------------------------
 
 "-------------------------- end plugins ----------------------
