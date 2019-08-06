@@ -1,6 +1,8 @@
 " Notes:
 " lifesaving vim python wrapping (save to .vim/indent/python.vim)
-" https://www.vim.org/scripts/script.php?script_id=974
+" from: https://www.vim.org/scripts/script.php?script_id=974
+" curl https://www.vim.org/scripts/download_script.php?src_id=4316
+"         > ~/.vim/indent/python.vim"
 
 set encoding=utf-8
 " load .vimrc on save
@@ -79,11 +81,6 @@ map <c-k> <c-w>k
 map <c-l> <c-w>l
 map <c-h> <c-w>h
 
-" easier moving between tabs
-"map <Leader>n <esc>:tabprevious<CR>
-"map <Leader>m <esc>:tabnext<CR>
-
-
 " set scrolling no less than three lines from screen border
 set scrolloff=3
 
@@ -144,7 +141,8 @@ set nowritebackup
 set noswapfile
 
 " save file as root even when not root
-command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
+" ERROR: this reverts all work when on a mac!!
+"command! W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
 " ============================================================================
 " Plugins
@@ -329,7 +327,9 @@ if !exists('g:deoplete#omni#input_patterns')
 endif
 
 "let g:deoplete#disable_auto_complete = 1
-let g:deoplete#auto_complete_delay = 150
+"let g:deoplete#auto_complete = 0
+set completeopt+=noinsert
+let g:deoplete#auto_complete_delay = 450
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
 " deoplete tab-complete (vanilla is <C-n>, <C-p>)
 "inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
