@@ -305,10 +305,10 @@ Plugin 'plasticboy/vim-markdown'
 :set conceallevel=2
 
 " Arduino
-Plugin 'stevearc/vim-arduino'
-nnoremap <buffer> <leader>av :ArduinoVerify<CR>
-nnoremap <buffer> <leader>au :ArduinoUpload<CR>
-nnoremap <buffer> <leader>as :ArduinoUploadAndSerial<CR>
+"Plugin 'stevearc/vim-arduino'
+"nnoremap <buffer> <leader>av :ArduinoVerify<CR>
+"nnoremap <buffer> <leader>au :ArduinoUpload<CR>
+"nnoremap <buffer> <leader>as :ArduinoUploadAndSerial<CR>
 
 " <C-[hjkl]> across vim panes and tmux panes
 Plugin 'christoomey/vim-tmux-navigator'
@@ -321,6 +321,7 @@ Plugin 'junegunn/goyo.vim'
 Plugin 'Shougo/deoplete.nvim'
 Plugin 'zchee/deoplete-jedi'
 
+let g:python3_host_prog = '/home/lewis/anaconda3/bin/python'
 let g:deoplete#enable_at_startup = 1
 if !exists('g:deoplete#omni#input_patterns')
   let g:deoplete#omni#input_patterns = {}

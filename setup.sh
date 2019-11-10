@@ -10,12 +10,9 @@ cd ~
 # oh-my-zsh
 sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 
-
-#Python (Anaconda distribution)
-#cd ~
-#wget https://repo.continuum.io/archive/Anaconda3-5.1.0-Linux-x86_64.sh
-#chmod +x Anaconada3-5.1.0-Linux-x86_64.sh
-#./Anaconada3-5.1.0-Linux-x86_64.sh
+# add fish like plugins
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 #nvim
 echo 'setting up neovim..'
@@ -43,5 +40,4 @@ cd
 # edit zshrc
 sed -e "\$aalias nvim=\'~/.nvim.appimage\'" ~/.zshrc
 sed -e "\$aalias cl=\'clear\'" ~/.zshrc
-sed -e "\$aZSH_THEME=\"terminalparty\"" ~/.zshrc
 
