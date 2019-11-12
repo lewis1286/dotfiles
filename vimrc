@@ -54,6 +54,9 @@ set mouse=n " mouse mode in normal mode for clicking, not in visual for copying
 
 set backspace=indent,eol,start
 
+" spell check when markdown
+autocmd BufRead,BufNewFile *.md setlocal spell
+
 " ----------------------------------------------------------------------
 " ------------------       remapped keys          ----------------------
 " ----------------------------------------------------------------------
@@ -343,6 +346,9 @@ Plugin 'sbdchd/neoformat'
 " ----------------------------------------------------------------------
 Plugin 'mhinz/vim-startify'
 Plugin 'majutsushi/tagbar'
+
+" YAML
+Plugin 'stephpy/vim-yaml'
 " ----------------------------------------------------------------------
 
 "-------------------------- end plugins ----------------------
