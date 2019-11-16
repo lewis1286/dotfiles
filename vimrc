@@ -305,10 +305,10 @@ Plugin 'plasticboy/vim-markdown'
 :set conceallevel=2
 
 " Arduino
-Plugin 'stevearc/vim-arduino'
-nnoremap <buffer> <leader>av :ArduinoVerify<CR>
-nnoremap <buffer> <leader>au :ArduinoUpload<CR>
-nnoremap <buffer> <leader>as :ArduinoUploadAndSerial<CR>
+"Plugin 'stevearc/vim-arduino'
+"nnoremap <buffer> <leader>av :ArduinoVerify<CR>
+"nnoremap <buffer> <leader>au :ArduinoUpload<CR>
+"nnoremap <buffer> <leader>as :ArduinoUploadAndSerial<CR>
 
 " <C-[hjkl]> across vim panes and tmux panes
 Plugin 'christoomey/vim-tmux-navigator'

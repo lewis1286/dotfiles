@@ -21,23 +21,43 @@ export ZSH=$HOME/.oh-my-zsh
 export KEYTIMEOUT=1
 
 export EDITOR='nvim'
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#ZSH_THEME="cloud"
-#ZSH_THEME="terminalparty"
-#ZSH_THEME="muse"
+
+# Use antigen package management
+source $HOME/.zsh/antigen.zsh
+
+
+# Load the oh-my-zsh's library.
+#antigen use oh-my-zsh
+
+## Bundles from the default repo (robbyrussell's oh-my-zsh).
+#antigen bundle git
+#antigen bundle pip
+#antigen bundle command-not-found
+
+## Syntax highlighting bundle.
+#antigen bundle zsh-users/zsh-syntax-highlighting
+## Load the theme.
+#antigen theme robbyrussell
+
+## Tell Antigen that you're done.
+#antigen apply
+
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(
+    git
+    python
+)
+
+source $ZSH/oh-my-zsh.sh
+source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # If we've set the theme, use that, otherwise, use the default
 ZSH_THEME=${ZSH_THEME:-cloud}
-
-
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+#ZSH_THEME="powerlevel9k/powerlevel9k"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -79,15 +99,6 @@ ZSH_THEME=${ZSH_THEME:-cloud}
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
-
-source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
