@@ -54,6 +54,9 @@ set mouse=n " mouse mode in normal mode for clicking, not in visual for copying
 
 set backspace=indent,eol,start
 
+" spell check when markdown
+autocmd BufRead,BufNewFile *.md setlocal spell
+
 " ----------------------------------------------------------------------
 " ------------------       remapped keys          ----------------------
 " ----------------------------------------------------------------------
@@ -321,6 +324,7 @@ Plugin 'junegunn/goyo.vim'
 Plugin 'Shougo/deoplete.nvim'
 Plugin 'zchee/deoplete-jedi'
 
+let g:python3_host_prog = '/home/lewis/anaconda3/bin/python'
 let g:deoplete#enable_at_startup = 1
 if !exists('g:deoplete#omni#input_patterns')
   let g:deoplete#omni#input_patterns = {}
@@ -342,6 +346,9 @@ Plugin 'sbdchd/neoformat'
 " ----------------------------------------------------------------------
 Plugin 'mhinz/vim-startify'
 Plugin 'majutsushi/tagbar'
+
+" YAML
+Plugin 'stephpy/vim-yaml'
 " ----------------------------------------------------------------------
 
 "-------------------------- end plugins ----------------------
