@@ -47,6 +47,8 @@ source $ZSH/oh-my-zsh.sh
 #source ~/.zsh/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 ZSH_THEME=${ZSH_THEME:-cloud}
+#ZSH_THEME=cloud
+
 # Which plugins would you like to load?
 # Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -96,3 +98,7 @@ preexec() { echo -ne '\e[5 q' ;} # Use beam shape cursor for each new prompt.
 
 # -----------------------------------------------------
 
+# turn reverse search ?back on after setting vi mode above
+bindkey '^R' history-incremental-search-backward
+
+RPROMPT="[%D{%y/%m/%f}|%T]"
