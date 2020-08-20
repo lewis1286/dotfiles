@@ -22,6 +22,8 @@ export KEYTIMEOUT=1
 
 export EDITOR='nvim'
 
+source ~/.bash_profile
+source ~/.local_aliases
 # Use antigen package management
 source $HOME/.zsh/antigen.zsh
 

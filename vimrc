@@ -16,6 +16,11 @@ if has('persistent_undo')
     set undofile
 endif
 
+" cursor shape
+let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+
 "--------------- clipboard  -----------
 " " Copy to clipboard
 vnoremap  <leader>y  "+y
@@ -205,18 +210,20 @@ endif
 syntax on
 set background=dark
 "colorscheme onedark
+"k
+Plugin 'morhetz/gruvbox'
 colorscheme gruvbox
 set colorcolumn=80
 
 " Dope ass snippets
-Plugin 'SirVer/ultisnips'
+"Plugin 'SirVer/ultisnips'
 " Snippets are separated from the engine. Add this if you want them:
-Plugin 'honza/vim-snippets'
+"Plugin 'honza/vim-snippets'
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-let g:UltiSnipsSnippetsDir = "~/.vim/bundle/ultisnips/Ultisnips/"
+"let g:UltiSnipsExpandTrigger="<tab>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"let g:UltiSnipsSnippetsDir = "~/.vim/bundle/ultisnips/Ultisnips/"
 
 
 " ---------------------------------------------------------
@@ -321,25 +328,25 @@ Plugin 'junegunn/goyo.vim'
 
 
 " --------------- completion engine for nvim --------------------------
-Plugin 'Shougo/deoplete.nvim'
-Plugin 'zchee/deoplete-jedi'
+"Plugin 'Shougo/deoplete.nvim'
+"Plugin 'zchee/deoplete-jedi'
 
-let g:python3_host_prog = '/home/lewis/anaconda3/bin/python'
-let g:deoplete#enable_at_startup = 1
-if !exists('g:deoplete#omni#input_patterns')
-  let g:deoplete#omni#input_patterns = {}
-endif
+"let g:python3_host_prog = '/home/lewis/anaconda3/bin/python'
+"let g:deoplete#enable_at_startup = 1
+"if !exists('g:deoplete#omni#input_patterns')
+  "let g:deoplete#omni#input_patterns = {}
+"endif
 
-"let g:deoplete#disable_auto_complete = 1
-"let g:deoplete#auto_complete = 0
-set completeopt+=noinsert
-let g:deoplete#auto_complete_delay = 450
-autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
-" deoplete tab-complete (vanilla is <C-n>, <C-p>)
-"inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+""let g:deoplete#disable_auto_complete = 1
+""let g:deoplete#auto_complete = 0
+"set completeopt+=noinsert
+"let g:deoplete#auto_complete_delay = 450
+"autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | pclose | endif
+"" deoplete tab-complete (vanilla is <C-n>, <C-p>)
+""inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
 
 " Formatting (also do `pip install yapf`)
-Plugin 'sbdchd/neoformat'
+"Plugin 'sbdchd/neoformat'
 
 " ----------------------------------------------------------------------
 " -------------------------- playground:  ------------------------------
