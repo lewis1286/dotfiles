@@ -1,3 +1,15 @@
+# my dotfiles
+
+# setup on a system
+
+clone this repo into home directory
+```bash
+cd dotfiles
+./makesymlinks.sh
+```
+
+Note `setup.sh` still buggy when trying to get neovim to install automatically
+
 # getting completion engine to work
 ```bash
 pip install backports.functools_lru_cache configparser futures
