@@ -1,30 +1,37 @@
-# my dotfiles
+# dotfiles
 
-# setup on a system
+Neovim config using [lazy.nvim](https://github.com/folke/lazy.nvim) — plugins bootstrap automatically on first launch.
 
-clone this repo into home directory
+## Install
+
 ```bash
-cd dotfiles
-./makesymlinks.sh
+git clone https://github.com/lewisguignard/dotfiles.git
+cp -r dotfiles/nvim ~/.config/nvim
+nvim  # lazy.nvim installs plugins on first open
 ```
 
-Note `setup.sh` still buggy when trying to get neovim to install automatically
+## What's included
 
-# getting completion engine to work
-```bash
-pip install backports.functools_lru_cache configparser futures
-```
+- `nvim/init.lua` — full config: options, keymaps, and plugins via lazy.nvim
+- `nvim/lazy-lock.json` — pinned plugin versions
 
-# Setting up nvim with autocomplete
+## Key plugins
 
-- [nice! tutorial](https://jdhao.github.io/2018/12/24/centos_nvim_install_use_guide_en/)
-- [Shougo/deoplete.nvim](https://github.com/Shougo/deoplete.nvim#configuration)
-- pointing nvim to specific python:
-    `let g:python3_host_prog = '/path/to/anaconda3/bin/python'`
+- **Telescope** — fuzzy find files, grep, buffers (`<leader>ff`, `<leader>fg`)
+- **Treesitter** — syntax highlighting
+- **render-markdown.nvim** + **markdown-preview.nvim** — markdown editing
+- **gitsigns.nvim** — git gutter
+- **lualine** — statusline
+- **nvim-autopairs** — auto-close brackets
 
-put some of this in `~/.config/nvim/init.vim` and then
-finish with sourceing .vimrc
-- `pip install jedi-vim, pynvim`
-- `:UpdateRemotePlugins`
-- `:checkhealth`
+## Keymaps
 
+| Key | Action |
+|-----|--------|
+| `jj` | Exit insert mode |
+| `<leader>/` | Clear search highlight |
+| `<leader>e` | File explorer |
+| `<leader>ff` | Find files |
+| `<leader>fg` | Live grep |
+| `<leader>fb` | Buffers |
+| `<C-h/j/k/l>` | Window navigation |
