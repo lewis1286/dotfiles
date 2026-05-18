@@ -42,13 +42,13 @@ dotfiles config status.showUntrackedFiles no
 
 After step 3, `~/.zshrc` is in place and the alias persists automatically.
 
-> **If `dotfiles checkout` fails** because existing files would be overwritten, back them up first:
+> **If `dotfiles checkout` fails** because existing files would be overwritten, move the conflicts out of the way first, then checkout:
 > ```bash
-> mkdir -p ~/dotfiles-backup
-> dotfiles checkout 2>&1 | grep "^\t" | awk '{print $1}' | \
->   xargs -I{} sh -c 'mkdir -p ~/dotfiles-backup/$(dirname {}) && mv $HOME/{} ~/dotfiles-backup/{}'
+> mv ~/.zshrc ~/.zshrc.backup
+> mv ~/.config/nvim ~/.config/nvim.backup
 > dotfiles checkout
 > ```
+> Check the backed-up files against the new ones before deleting them.
 
 ## Daily usage
 
