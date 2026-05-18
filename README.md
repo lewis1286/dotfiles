@@ -72,5 +72,6 @@ dotfiles push
 ## Tracked files
 
 - `~/.zshrc` — shell config (includes the `dotfiles` alias)
+- `~/.p10k.zsh` — Powerlevel10k prompt config
 - `~/.config/nvim/` — Neovim config
 - `~/README.md` — this file
