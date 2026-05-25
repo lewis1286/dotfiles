@@ -118,6 +118,7 @@ source $ZSH/oh-my-zsh.sh
 # Quick aliases
 alias l='ls -alh'
 alias ..='cd ..'
+alias cl='clear'
 
 # Environment variables
 export EDITOR='vim'
