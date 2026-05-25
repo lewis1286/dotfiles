@@ -54,7 +54,8 @@ After step 3, `~/.zshrc` is in place and the alias persists automatically.
 
 ```bash
 dotfiles status                        # see what's changed
-dotfiles add ~/.zshrc                  # stage a file
+dotfiles add -u                        # stage all changes to tracked files
+dotfiles add ~/.zshrc                  # stage a specific file
 dotfiles commit -m "update zshrc"     # commit
 dotfiles push                          # push to GitHub
 dotfiles ls-files                      # list all tracked files
