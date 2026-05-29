@@ -4,3 +4,5 @@
 
 vim.g.mapleader = ","
 vim.g.maplocalleader = "\\"
+
+vim.opt.fillchars = { vert = "█", horiz = "█" }

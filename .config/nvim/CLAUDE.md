@@ -6,7 +6,7 @@ LazyVim distribution on top of Neovim. Tracked as part of a bare-git dotfiles re
 
 - **Distro**: [LazyVim](https://lazyvim.org) — opinionated defaults + extras system
 - **Plugin manager**: lazy.nvim (bootstrapped in `lua/config/lazy.lua`)
-- **Colorscheme**: Catppuccin Mocha
+- **Colorscheme**: Catppuccin Frappe
 - **Dotfile tracking**: `dotfiles` alias (`git --git-dir=$HOME/dotfiles/ --work-tree=$HOME`) — no symlinks
 
 ## Directory structure
@@ -25,8 +25,13 @@ LazyVim distribution on top of Neovim. Tracked as part of a bare-git dotfiles re
     └── plugins/              # custom plugin specs — every .lua file here is auto-loaded
         ├── colorscheme.lua
         ├── csvview.lua
+        ├── disabled.lua      # currently empty; place `{ "plugin", enabled = false }` here
         ├── markdown.lua
-        ├── telescope.lua
+        ├── obsidian.lua
+        ├── snacks.lua
+        ├── surround.lua
+        ├── todo.lua
+        ├── url-open.lua
         └── example.lua       # disabled (guard at top: `if true then return {} end`)
 ```
 
@@ -50,14 +55,19 @@ LazyExtras (`:LazyExtras`) are for officially bundled extras. Anything not liste
 
 | File | Plugin | Purpose |
 |------|--------|---------|
-| `colorscheme.lua` | catppuccin/nvim | Catppuccin Mocha theme |
-| `csvview.lua` | hat0uma/csvview.nvim | Aligned CSV/TSV table view |
-| `markdown.lua` | render-markdown.nvim | In-editor markdown rendering; disables marksman LSP and markdownlint |
-| `telescope.lua` | (snacks.nvim override) | Shows hidden files in file/grep pickers |
+| `colorscheme.lua` | catppuccin/nvim | Catppuccin Frappe theme |
+| `csvview.lua` | hat0uma/csvview.nvim | Aligned CSV/TSV table view with Excel-like nav |
+| `markdown.lua` | render-markdown.nvim + bullets.vim | In-editor markdown rendering; disables marksman LSP, markdownlint, markdown-preview |
+| `obsidian.lua` | epwalsh/obsidian.nvim | Obsidian vault integration (caremaze, second-brain, obsidian-vault-template workspaces) |
+| `snacks.lua` | folke/snacks.nvim | Terminal, dashboard (ASCII header, projects section), picker (hidden files in file/grep) |
+| `surround.lua` | nvim-mini/mini.surround | Surround motions (gsa/gsd/gsf/gsr); custom `w` surrounding for `[[wikilinks]]` |
+| `todo.lua` | folke/todo-comments.nvim | Highlight TODO/FIXME/etc in non-comment lines too |
+| `url-open.lua` | sontungexpt/url-open | Open URL under cursor |
 
 ## LazyExtras enabled
 
-Check `lazyvim.json` for the current list. Includes at minimum `lang.typescript` (hardcoded in `lazy.lua`).
+From `lazyvim.json`: `lang.clangd`, `lang.json`, `lang.markdown`, `lang.toml`.
+Also `lang.typescript` hardcoded in `lazy.lua` (not in lazyvim.json).
 
 ## LuaLS annotations
 

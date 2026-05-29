@@ -4,7 +4,12 @@ return {
     name = "catppuccin",
     priority = 1000,
     opts = {
-      flavour = "mocha", -- latte, frappe, macchiato, mocha
+      flavour = "frappe", -- latte, frappe, macchiato, mocha
+      custom_highlights = function(colors)
+        return {
+          WinSeparator = { fg = colors.lavender, bold = true },
+        }
+      end,
     },
   },
   {

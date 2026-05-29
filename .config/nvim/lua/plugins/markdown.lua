@@ -4,16 +4,20 @@ return {
     "MeanderingProgrammer/render-markdown.nvim",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     ft = { "markdown" },
-    opts = {
-      -- LazyVim's markdown extra disables both of these; restore them here.
-      heading = {
-        icons = { "󰲡 ", "󰲣 ", "󰲥 ", "󰲧 ", "󰲩 ", "󰲫 " },
-      },
-      checkbox = {
+    opts = function(_, defaults)
+      defaults.checkbox = {
         enabled = true,
+        unchecked = { icon = "☐ " },
         checked = { icon = "✔ " },
-      },
-    },
+      }
+      defaults.heading = {
+        icons = { "󰲡 ", "󰲣 ", "󰲥 ", "󰲧 ", "󰲩 ", "󰲫 " },
+      }
+      -- defaults.anti_conceal = {
+      --   enabled = false,
+      -- }
+      return defaults
+    end,
   },
 
   -- Disable LSP (marksman) for markdown files
@@ -27,6 +31,12 @@ return {
   },
 
   { "iamcco/markdown-preview.nvim", enabled = false },
+
+  -- Auto-continue bullets/todos on <CR> and o/O
+  {
+    "dkarter/bullets.vim",
+    ft = { "markdown", "text", "gitcommit" },
+  },
 
   -- Remove markdownlint from nvim-lint
   {
