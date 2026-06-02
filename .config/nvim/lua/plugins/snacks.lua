@@ -4,6 +4,9 @@ return {
     ---@type snacks.Config
     opts = {
       terminal = {},
+      explorer = {
+        preview = true,
+      },
       picker = {
         sources = {
           files = { hidden = true },

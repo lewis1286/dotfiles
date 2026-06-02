@@ -144,3 +144,6 @@ alias vim='nvim'
 
 # Dotfiles management — bare repo, $HOME as worktree
 alias dotfiles='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
+
+# vim mode on the command line
+bindkey -v

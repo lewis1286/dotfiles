@@ -26,10 +26,16 @@ return {
 
       daily_notes = {
         folder = "daily",
+        template = "daily-note-template.md",
+      },
+
+      templates = {
+        folder = "templates",
       },
 
       ui = { enable = false },
       mappings = {
+        -- toggle checkboxes
         ["<leader>ch"] = {
           action = function()
             local line = vim.api.nvim_get_current_line()
