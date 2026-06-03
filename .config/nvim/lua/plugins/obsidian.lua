@@ -27,6 +27,7 @@ return {
       daily_notes = {
         folder = "daily",
         template = "daily-note-template.md",
+        default_tags = {},
       },
 
       templates = {
