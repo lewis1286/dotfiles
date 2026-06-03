@@ -72,11 +72,16 @@ return {
         ["<C-p>"] = {},
       },
       sources = {
-        default = { "lsp", "path", "snippets", "buffer", "obsidian", "obsidian_new", "obsidian_tags" },
+        default = { "lsp", "path", "snippets", "buffer", "obsidian", "obsidian_new", "obsidian_tags", "obsidian_fm_tags" },
         providers = {
           obsidian = { name = "obsidian", module = "blink.compat.source" },
           obsidian_new = { name = "obsidian_new", module = "blink.compat.source" },
           obsidian_tags = { name = "obsidian_tags", module = "blink.compat.source" },
+          obsidian_fm_tags = {
+            name = "obsidian_fm_tags",
+            module = "blink_sources.obsidian_fm_tags",
+            min_keyword_length = 0,
+          },
           buffer = {
             transform_items = function(_, items)
               return vim.tbl_filter(function(item)
