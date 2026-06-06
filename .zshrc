@@ -147,3 +147,12 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/dotfiles/ --work-tree=$HOME'
 
 # vim mode on the command line
 bindkey -v
+
+# fzf command line key bindings
+source <(fzf --zsh)
+
+# Avante (nvim based claude code)
+alias avante='nvim -c "lua vim.defer_fn(function()require(\"avante.api\").zen_mode()end, 100)"'
+
+# fuzzy find any file!  tab to multiselect
+alias inv='nvim $(fzf -m --preview="bat --color=always {}")'

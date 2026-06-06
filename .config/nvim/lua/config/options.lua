@@ -6,3 +6,6 @@ vim.g.mapleader = ","
 vim.g.maplocalleader = "\\"
 
 vim.opt.fillchars = { vert = "█", horiz = "█" }
+
+-- suggestion by Avante.nvim plugin
+vim.opt.laststatus = 3

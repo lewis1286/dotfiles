@@ -7,6 +7,7 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "saghen/blink.compat",
+      "nvim-telescope/telescope.nvim",
     },
     opts = {
       workspaces = {
@@ -32,6 +33,10 @@ return {
 
       templates = {
         folder = "templates",
+      },
+
+      picker = {
+        name = "telescope.nvim",
       },
 
       ui = { enable = false },
