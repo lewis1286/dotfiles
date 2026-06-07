@@ -15,7 +15,18 @@ return {
       -- this file can contain specific instructions for your project
       instructions_file = "avante.md",
       -- for example
-      provider = "claude-code",
+      -- an extra comment
+      --provider = "claude-code",
+      provider = "claude",
+      behaviour = {
+        -- Default is `true`, which auto-approves every tool call (including file
+        -- edits) so nothing ever pauses for you. Set to `false` to be prompted to
+        -- approve/deny each change. Can also be a list of tool names to auto-approve
+        -- only those, e.g. { "view", "ls" }.
+        auto_approve_tool_permissions = false,
+        -- "inline_buttons" (default) or "popup" for the approve/deny UI.
+        confirmation_ui_style = "inline_buttons",
+      },
       providers = {
         claude = {
           endpoint = "https://api.anthropic.com",

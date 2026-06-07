@@ -8,9 +8,29 @@ return {
         preview = true,
       },
       picker = {
+        -- Drop grep hits on lines that are one long unbroken token (no spaces) —
+        -- characteristic of base64/compressed JSON embedded by Excalidraw.
+        -- item.line is lazy (populated inside item.resolve), so resolve first.
+        transform = function(item)
+          Snacks.picker.util.resolve(item)
+          local line = item.line
+          if line and #line > 200 and not line:find(" ") then
+            return false
+          end
+          return item
+        end,
         sources = {
           files = { hidden = true },
-          grep = { hidden = true },
+          grep = {
+            hidden = true,
+            args = {
+              "--glob=!*.excalidraw.md",
+              "--glob=!*.excalidraw",
+              "--glob=!.obsidian/themes/**",
+              "--glob=!.obsidian/plugins/**",
+              "--glob=!.obsidian/*.js",
+            },
+          },
         },
       },
       dashboard = {
