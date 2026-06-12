@@ -8,6 +8,9 @@ return {
           input = { "%[%[(.-)%]%]" },
           output = { left = "[[", right = "]]" },
         },
+        B = { output = { left = "**", right = "**" } }, -- bold
+        I = { output = { left = "*", right = "*" } }, -- italic / emphasis
+        C = { output = { left = "`", right = "`" } }, -- inline code
       },
       mappings = {
         add = "gsa",

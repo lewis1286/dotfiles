@@ -8,7 +8,7 @@ font-family = "MesloLGS NF"
 theme = Catppuccin Macchiato
 
 # For transparency
-background-opacity = 0.88
+background-opacity = 0.93
 
 # Cursor preferences
 cursor-style = "block"

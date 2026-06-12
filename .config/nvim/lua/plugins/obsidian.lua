@@ -27,8 +27,9 @@ return {
 
       daily_notes = {
         folder = "daily",
+        date_format = "%Y/%m/%Y-%m-%d",
         template = "daily-note-template.md",
-        default_tags = {},
+        default_tags = { "daily-note" },
       },
 
       templates = {
@@ -77,7 +78,16 @@ return {
         ["<C-p>"] = {},
       },
       sources = {
-        default = { "lsp", "path", "snippets", "buffer", "obsidian", "obsidian_new", "obsidian_tags", "obsidian_fm_tags" },
+        default = {
+          "lsp",
+          "path",
+          "snippets",
+          "buffer",
+          "obsidian",
+          "obsidian_new",
+          "obsidian_tags",
+          "obsidian_fm_tags",
+        },
         providers = {
           obsidian = { name = "obsidian", module = "blink.compat.source" },
           obsidian_new = { name = "obsidian_new", module = "blink.compat.source" },

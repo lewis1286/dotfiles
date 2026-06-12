@@ -16,8 +16,8 @@ return {
       instructions_file = "avante.md",
       -- for example
       -- an extra comment
-      --provider = "claude-code",
-      provider = "claude",
+      provider = "claude-code",
+      -- provider = "claude",
       behaviour = {
         -- Default is `true`, which auto-approves every tool call (including file
         -- edits) so nothing ever pauses for you. Set to `false` to be prompted to
