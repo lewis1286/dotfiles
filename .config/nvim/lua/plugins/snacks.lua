@@ -6,8 +6,6 @@ return {
       terminal = {},
       explorer = {
         preview = true,
-        hidden = true,   -- show dotfiles (.env, .gitignore, etc.)
-        ignored = true,  -- show files inside nested git repos (sub-repos appear empty otherwise)
       },
       picker = {
         -- Drop grep hits on lines that are one long unbroken token (no spaces) —
@@ -22,6 +20,11 @@ return {
           return item
         end,
         sources = {
+          explorer = {
+            hidden = true,   -- show dotfiles (.env, etc.)
+            ignored = true,  -- show gitignored files (jasper.db, kb/, etc.)
+            git_status = false,
+          },
           files = { hidden = true },
           grep = {
             hidden = true,
