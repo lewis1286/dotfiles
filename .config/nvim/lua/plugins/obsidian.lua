@@ -41,6 +41,37 @@ return {
       },
 
       ui = { enable = false },
+
+      -- Only manage `created` / `updated`; leave every other field as typed.
+      -- (obsidian still re-serializes the YAML block in a fixed key order on save.)
+      note_frontmatter_func = function(note)
+        local out = {}
+
+        -- Carry over every custom frontmatter key untouched.
+        if note.metadata ~= nil and not vim.tbl_isempty(note.metadata) then
+          for k, v in pairs(note.metadata) do
+            out[k] = v
+          end
+        end
+
+        -- Preserve obsidian's managed fields (drop empty aliases/tags so they
+        -- aren't injected into notes that don't use them).
+        out.id = note.id
+        if note.aliases ~= nil and #note.aliases > 0 then
+          out.aliases = note.aliases
+        end
+        if note.tags ~= nil and #note.tags > 0 then
+          out.tags = note.tags
+        end
+
+        -- The only fields we actively manage: stamp `created` once, bump
+        -- `updated` on every save. Format matches the second-brain vault.
+        local now = os.date("%Y-%m-%dT%H:%M")
+        out.created = out.created or now
+        out.updated = now
+
+        return out
+      end,
       mappings = {
         -- toggle checkboxes
         ["<leader>ch"] = {
